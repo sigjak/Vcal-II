@@ -332,7 +332,7 @@ export default {
           type: "info",
           onBeforeOpen: () => {
             this.$swal.showLoading();
-            this.$http.post("halfDayPostNew.php", this.userData).then(() => {
+            this.$http.post("halfDayPost.php", this.userData).then(() => {
               this.userData.selectedDays = [];
               this.userData.dates = [];
               this.$swal.disableLoading();
@@ -462,20 +462,18 @@ export default {
   created() {
     this.userData.unit = this.unit;
     this.userData.table = this.table;
-    this.$http
-      .get(`getHalfDateNew.php?name=${this.userData.table}`)
-      .then(resp => {
-        this.amArray = resp.data[0];
-        this.pmArray = resp.data[2];
-        f.assign(resp.data[0], this.amReservedDays);
-        f.assign(resp.data[1], this.ampmReservedDays);
-        f.assign(resp.data[2], this.pmReservedDays);
+    this.$http.get(`getHalfDate.php?name=${this.userData.table}`).then(resp => {
+      this.amArray = resp.data[0];
+      this.pmArray = resp.data[2];
+      f.assign(resp.data[0], this.amReservedDays);
+      f.assign(resp.data[1], this.ampmReservedDays);
+      f.assign(resp.data[2], this.pmReservedDays);
 
-        this.disabledDates = this.disabledDates.concat(
-          this.ampmReservedDays,
-          Holidays[1]
-        );
-      });
+      this.disabledDates = this.disabledDates.concat(
+        this.ampmReservedDays,
+        Holidays[1]
+      );
+    });
   }
 };
 </script>
