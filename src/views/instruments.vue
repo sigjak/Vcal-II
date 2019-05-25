@@ -133,45 +133,13 @@
               is-inline
             />
           </div>
-          <!-- <div class="col-12 col-md-auto border rounded-lg mt-3 px-2 pt-3 sel">
-            <h6 class=" h6 font-weight-bold px-2 ss mb-0">Selected Days</h6>
-            <ul v-if="userData.dates.length">
-              <li v-for="(day, index) in userData.dates" :key="index">
-                {{ day.toDateString() }}
-              </li>
-            </ul>
-          </div> -->
+
           <div class="col-10 col-lg-auto">
             <div class=" card mt-3">
               <div class="card-header text-center ">Selected days</div>
               <div class="card-body pt-0 pl-2">
                 <ul v-if="userData.dates.length">
                   <li v-for="(day, index) in userData.dates" :key="index">
-                    <span
-                      v-if="
-                        userData.table === 'ftir' || userData.table === 'sem'
-                      "
-                    >
-                      <span v-if="amShow[index]">
-                        <input
-                          type="checkbox"
-                          id="am"
-                          value="am"
-                          v-model="userData.am[index]"
-                        />
-
-                        <label class="mx-1">AM</label>
-                      </span>
-                      <span v-if="pmShow[index]">
-                        <input
-                          type="checkbox"
-                          id="pm"
-                          value="pm"
-                          v-model="userData.pm[index]"
-                        />
-                        <label class="mx-1">PM</label>
-                      </span>
-                    </span>
                     {{ day.toDateString() }}
                   </li>
                 </ul>
@@ -285,7 +253,7 @@
               value="Submit"
               class="btn btn-primary"
               :disabled="$v.userData.$invalid || userData.dates.length <= 0"
-            />=0" />
+            />
           </div>
         </div>
       </form>
@@ -313,52 +281,38 @@ export default {
         confirmButtonText: "Yes"
       }).then(res => {
         if (res.value) {
-          this.$router.push("/selectItem/");
+          this.$router.push("/select");
         } else {
           window.location.href = "http://jardvis.hi.is/";
         }
       });
     },
     submitting() {
-      let stat = f.status(this.userData);
-      // selectedDays contains PHP timestamp
-      if (stat) {
-        this.userData.dates.forEach(element => {
-          this.userData.selectedDays.push(element.getTime() / 1000);
-        });
-        this.userData.account = `101-${this.userData.account}`;
-        this.$swal({
-          title: "Saving and sending email",
-          type: "info",
-          onBeforeOpen: () => {
-            this.$swal.showLoading();
-            this.$http.post("halfDayPost.php", this.userData).then(() => {
-              this.userData.selectedDays = [];
-              this.userData.dates = [];
-              this.$swal.disableLoading();
-              //this.showAlert();
-            });
-          }
-        });
-      } else {
-        this.$swal({
-          type: "error",
-          text: "Select AM, PM or both!",
-          timer: 3000
-        });
-      }
+      this.userData.dates.forEach(element => {
+        this.userData.selectedDays.push(element.getTime() / 1000);
+      });
+      console.log(this.userData);
+      this.userData.account = `101-${this.userData.account}`;
+      this.$swal({
+        title: "Saving and sending email",
+        type: "info",
+        onBeforeOpen: () => {
+          this.$swal.showLoading();
+          this.$http.post("instrPost.php", this.userData).then(() => {
+            this.userData.selectedDays = [];
+            this.userData.dates = [];
+            this.$swal.disableLoading();
+            this.showAlert();
+          });
+        }
+      });
     }
   },
   data() {
     return {
       disabledDates: [{ weekdays: [1, 7] }],
-      amShow: [],
-      pmShow: [],
-      amArray: [],
-      pmArray: [],
+
       userData: {
-        am: [],
-        pm: [],
         status: [],
         unit: "",
         table: "",
@@ -369,11 +323,17 @@ export default {
         account: "",
         supervisor: "",
         comments: "",
+        slide27: 0,
+        slide27Coated: 0,
+        oneRound: 0,
+        onePolished: 0,
+        oneSeven: 0,
+        mountCoated: 0,
+        carbon: 0,
+        repolish: 0,
         selectedDays: []
       },
-      amReservedDays: [],
-      pmReservedDays: [],
-      ampmReservedDays: []
+      reservedDays: []
     };
   },
   validations: {
@@ -425,146 +385,33 @@ export default {
             label: "Booked",
             hideIndicator: true
           },
-          dates: this.ampmReservedDays
-        },
-        {
-          key: "am",
-          highlight: {
-            class: "ambg",
-            contentClass: "amcontent"
-          },
-          popover: {
-            label: "PM available",
-            hideIndicator: true
-          },
-          dates: this.amReservedDays
-        },
-        {
-          key: "pm",
-          highlight: {
-            class: "ambg",
-            contentClass: "amcontent"
-          },
-          popover: {
-            label: "AM available",
-            hideIndicator: true
-          },
-          dates: this.pmReservedDays
+          dates: this.reservedDays
         }
       ];
       return attrs;
     }
   },
-  beforeUpdate() {
-    f.show(this.userData, this.amArray, this.amShow);
-    f.show(this.userData, this.pmArray, this.pmShow);
-  },
+
   created() {
     this.userData.unit = this.unit;
     this.userData.table = this.table;
-    this.$http.get(`getHalfDate.php?name=${this.userData.table}`).then(resp => {
-      this.amArray = resp.data[0];
-      this.pmArray = resp.data[2];
-      f.assign(resp.data[0], this.amReservedDays);
-      f.assign(resp.data[1], this.ampmReservedDays);
-      f.assign(resp.data[2], this.pmReservedDays);
-
+    this.$http.get(`getDate.php?name=${this.userData.table}`).then(resp => {
+      f.assign(resp.data[1], this.reservedDays);
+      console.log(this.reservedDays);
       this.disabledDates = this.disabledDates.concat(
-        this.ampmReservedDays,
+        this.reservedDays,
         Holidays[1]
       );
     });
+    if (this.userData.table === "thin_sections") {
+      this.userData.dates.push(new Date());
+    }
   }
 };
 </script>
-<style>
-input[type="number"] {
-  width: 50px;
-  margin: 0 auto;
-}
-/* .error {
-  border-color: red;
-  color: red;
-} */
-.tt {
-  background-color: #f9f9f9;
-}
-.form-check-inline {
-  margin-left: -0.5rem !important;
-}
-input[type="checkbox"] {
-  vertical-align: middle;
-  position: relative;
-  bottom: 2px;
-}
-/* .card {
-  min-width: 250px !important;
+<style scoped>
+.card {
+  min-width: 200px !important;
   min-height: 200px;
-} */
-.card-header {
-  background-color: #edb862 !important;
-}
-
-label {
-  font-size: 0.9rem !important;
-}
-.cont {
-  color: red !important;
-}
-.vc-header {
-  background: #edb862;
-  padding-bottom: 5px;
-}
-.vc-title-layout {
-  padding-bottom: 10px;
-}
-li {
-  font-size: 0.9rem !important;
-  line-height: 1 !important;
-}
-.vc-container {
-  margin: 0 auto;
-}
-
-ul {
-  /*padding: 10px 0px 0px 10px;*/
-  margin-top: 1rem !important;
-  padding-left: 20px;
-  list-style: none;
-}
-.vc-pointer-events-none {
-  pointer-events: auto !important;
-  cursor: no-drop !important;
-}
-.ccc {
-  color: red !important;
-  cursor: no-drop !important;
-}
-.allbg {
-  background-color: #fff !important;
-}
-.ambg {
-  background-color: rgb(121, 144, 248) !important;
-  border: 1px solid !important;
-  border-radius: 50% !important;
-}
-.amcontent {
-  color: white !important;
-}
-.ba {
-  background-color: #fff !important;
-
-  border: 1.5px solid red !important;
-  border-radius: 50% !important;
-  opacity: 0.5;
-}
-.bo {
-  color: red !important;
-  z-index: 100;
-  font-style: italic;
-}
-body {
-  background-image: url("../images/view.jpg");
-  background-size: cover;
 }
 </style>

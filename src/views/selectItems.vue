@@ -22,7 +22,7 @@
               <router-link
                 class="btn btn-primary"
                 :to="{
-                  name: 'ampm',
+                  name: 'instruments',
                   params: { unit: 'Microprobe', table: 'probeuse' }
                 }"
               >
@@ -57,7 +57,7 @@
               <router-link
                 class="btn btn-primary"
                 :to="{
-                  name: 'ampm',
+                  name: 'instruments',
                   params: { unit: 'Thin sections', table: 'thin_sections' }
                 }"
               >

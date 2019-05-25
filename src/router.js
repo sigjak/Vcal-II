@@ -3,15 +3,22 @@ import Router from "vue-router";
 import Select from "./views/selectItems.vue";
 import AMPM from "./views/AMPM1.vue";
 import Cars from "./views/Cars.vue";
+import Instruments from "./views/instruments.vue";
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: "/",
+      path: "/select",
       name: "select",
       component: Select
+    },
+    {
+      path: "/instruments",
+      name: "instruments",
+      component: Instruments,
+      props: true
     },
     {
       path: "/AMPM",
@@ -19,6 +26,7 @@ export default new Router({
       component: AMPM,
       props: true
     },
+
     {
       path: "/cars",
       name: "cars",
