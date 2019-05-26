@@ -119,7 +119,7 @@
           class=" tt mt-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg "
         >
           <div class="col-12 text-center">
-            <h1>Select days</h1>
+            <h2>Select days</h2>
           </div>
 
           <div class="col-12 col-lg-auto mt-3">

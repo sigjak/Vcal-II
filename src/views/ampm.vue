@@ -5,117 +5,7 @@
 
     <div class="container pb-5">
       <form @submit.prevent="submitting">
-        <!--                                      THIN SECTIONS                   -->
         <div
-          v-if="userData.table == 'thin_sections'"
-          class="border border-light rounded p-3"
-        >
-          <h5>Select:</h5>
-
-          <div class="row">
-            <div class="form-group col-sm-3 ">
-              <input
-                v-model.number="userData.slide27"
-                type="number"
-                min="0"
-                class=" form-control form-control-sm"
-              />
-              <p class=" text-center">
-                27*46 mm slide
-              </p>
-            </div>
-
-            <div class="form-group col-sm-3 ">
-              <input
-                v-model.number="userData.slide27Coated"
-                type="number"
-                min="0"
-                class="form-control form-control-sm"
-              />
-              <p class=" text-center">
-                27*46 mm slide
-                <br />polished/coated
-              </p>
-            </div>
-
-            <div class="form-group col-sm-3 text-center">
-              <input
-                v-model.number="userData.oneRound"
-                type="number"
-                min="0"
-                class="form-control form-control-sm"
-              />
-              <p class=" text-center">
-                1" round slide
-              </p>
-            </div>
-
-            <div class="form-group col-sm-3 text-center">
-              <input
-                v-model.number="userData.onePolished"
-                type="number"
-                min="0"
-                class="form-control form-control-sm"
-              />
-              <p class=" text-center">
-                1" round slide
-                <br />polished/coated
-              </p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-sm-3 text-center">
-              <input
-                v-model.number="userData.mountCoated"
-                type="number"
-                min="0"
-                class="form-control form-control-sm"
-              />
-              <p class=" text-center">
-                1" round mount
-                <br />polished/coated
-              </p>
-            </div>
-
-            <div class="form-group col-sm-3 text-center">
-              <input
-                v-model.number="userData.oneSeven"
-                type="number"
-                min="0"
-                class="form-control form-control-sm"
-              />
-              <p class="text-center">
-                1" round mount- 7 samples
-                <br />polished/coated
-              </p>
-            </div>
-            <div class="form-group col-sm-3 text-center">
-              <input
-                v-model.number="userData.carbon"
-                type="number"
-                min="0"
-                class="form-control form-control-sm"
-              />
-              <p class=" text-center">
-                Carbon coating
-              </p>
-            </div>
-            <div class="form-group col-sm-3 text-center">
-              <input
-                v-model.number="userData.repolish"
-                type="number"
-                min="0"
-                class="form-control form-control-sm"
-              />
-              <p class="text-center">
-                Repolishing and coating
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div
-          v-if="userData.table !== 'thin_sections'"
           class=" tt mt-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg "
         >
           <div class="col-12 text-center">
@@ -133,14 +23,7 @@
               is-inline
             />
           </div>
-          <!-- <div class="col-12 col-md-auto border rounded-lg mt-3 px-2 pt-3 sel">
-            <h6 class=" h6 font-weight-bold px-2 ss mb-0">Selected Days</h6>
-            <ul v-if="userData.dates.length">
-              <li v-for="(day, index) in userData.dates" :key="index">
-                {{ day.toDateString() }}
-              </li>
-            </ul>
-          </div> -->
+
           <div class="col-10 col-lg-auto">
             <div class=" card mt-3">
               <div class="card-header text-center ">Selected days</div>
@@ -285,7 +168,7 @@
               value="Submit"
               class="btn btn-primary"
               :disabled="$v.userData.$invalid || userData.dates.length <= 0"
-            />=0" />
+            />
           </div>
         </div>
       </form>
@@ -477,94 +360,9 @@ export default {
   }
 };
 </script>
-<style>
-input[type="number"] {
-  width: 50px;
-  margin: 0 auto;
-}
-/* .error {
-  border-color: red;
-  color: red;
-} */
-.tt {
-  background-color: #f9f9f9;
-}
-.form-check-inline {
-  margin-left: -0.5rem !important;
-}
-input[type="checkbox"] {
-  vertical-align: middle;
-  position: relative;
-  bottom: 2px;
-}
-/* .card {
+<style scoped>
+.card {
   min-width: 250px !important;
-  min-height: 200px;
-} */
-.card-header {
-  background-color: #edb862 !important;
-}
-
-label {
-  font-size: 0.9rem !important;
-}
-.cont {
-  color: red !important;
-}
-.vc-header {
-  background: #edb862;
-  padding-bottom: 5px;
-}
-.vc-title-layout {
-  padding-bottom: 10px;
-}
-li {
-  font-size: 0.9rem !important;
-  line-height: 1 !important;
-}
-.vc-container {
-  margin: 0 auto;
-}
-
-ul {
-  /*padding: 10px 0px 0px 10px;*/
-  margin-top: 1rem !important;
-  padding-left: 20px;
-  list-style: none;
-}
-.vc-pointer-events-none {
-  pointer-events: auto !important;
-  cursor: no-drop !important;
-}
-.ccc {
-  color: red !important;
-  cursor: no-drop !important;
-}
-.allbg {
-  background-color: #fff !important;
-}
-.ambg {
-  background-color: rgb(121, 144, 248) !important;
-  border: 1px solid !important;
-  border-radius: 50% !important;
-}
-.amcontent {
-  color: white !important;
-}
-.ba {
-  background-color: #fff !important;
-
-  border: 1.5px solid red !important;
-  border-radius: 50% !important;
-  opacity: 0.5;
-}
-.bo {
-  color: red !important;
-  z-index: 100;
-  font-style: italic;
-}
-body {
-  background-image: url("../images/view.jpg");
-  background-size: cover;
+  min-height: 200px !important;
 }
 </style>
