@@ -194,12 +194,10 @@ export default {
     //1 is confirmed, 0 is pending -
     this.userData.unit = this.unit;
     this.userData.table = this.table;
-    this.$http
-      .get(`getHalfDateNew.php?name=${this.userData.table}`)
-      .then(resp => {
-        f.assign(resp.data[0], this.pendingDays);
-        f.assign(resp.data[1], this.disabledDates);
-      });
+    this.$http.get(`getHalfDate.php?name=${this.userData.table}`).then(resp => {
+      f.assign(resp.data[0], this.pendingDays);
+      f.assign(resp.data[1], this.disabledDates);
+    });
   }
 };
 </script>

@@ -291,7 +291,6 @@ export default {
       this.userData.dates.forEach(element => {
         this.userData.selectedDays.push(element.getTime() / 1000);
       });
-      console.log(this.userData);
       this.userData.account = `101-${this.userData.account}`;
       this.$swal({
         title: "Saving and sending email",
