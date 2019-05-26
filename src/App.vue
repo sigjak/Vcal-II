@@ -19,7 +19,7 @@ export default {
 
 <style>
 body {
-  background: url("./images/view.jpg") no-repeat center center fixed;
+  background: url("./images/dawn.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 input[type="number"] {
@@ -41,10 +41,10 @@ input[type="checkbox"] {
   position: relative;
   bottom: 2px;
 }
-/* .card {
-  min-width: 250px !important;
-  min-height: 200px;
-} */
+.card-header {
+  color: black !important;
+  font-weight: 600 !important;
+}
 .card-header {
   background-color: #edb862 !important;
 }

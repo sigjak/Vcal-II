@@ -43,12 +43,12 @@ const oo = {
     } while (start < end);
     tsArray.forEach((element, index) => (tsArray[index] = element / 1000));
     return tsArray;
+    // tsArray timestamp for PHP
   },
-  carStatus(day, length) {
+  carStatus(day) {
     let dayOne = day.getTime();
-
     let status = 1;
-    let arr = [];
+
     const yr = +new Date().getFullYear();
     const firstDaySummer = new Date(yr, 4, 1).getTime();
     const lastDaySummer = new Date(yr, 9, 1).getTime();
@@ -56,10 +56,8 @@ const oo = {
     if (firstDaySummer < dayOne && dayOne < lastDaySummer) {
       status = 0;
     }
-    for (let i = 0; i < length; i++) {
-      arr[i] = status;
-    }
-    return arr;
+
+    return status;
   }
 };
 export default oo;

@@ -2,7 +2,7 @@
   <!-- 1 is confirmed, 0 is pending -->
   <div>
     <img src="../images/header_01.png" class="img-fluid" />
-    <h1 class="text-center display-4  mt-4">{{ userData.unit }}</h1>
+    <h1 class="text-center text-light display-4  mt-4">{{ userData.unit }}</h1>
 
     <div class="container pb-5">
       <form @submit.prevent="submitting">
@@ -27,14 +27,6 @@
             />
           </div>
 
-          <!-- <div class="col-12 col-md-auto border rounded-lg mt-3 px-2 pt-3 sel">
-            <h6 class=" h6 font-weight-bold px-2 ss mb-0">Selected Days</h6>
-            <ul v-if="userData.dates.length">
-              <li v-for="(day, index) in userData.dates" :key="index">
-                {{ day.toDateString() }}
-              </li>
-            </ul>
-          </div> -->
           <div class="col-10 col-lg-auto">
             <div class=" card mt-3">
               <div class="card-header text-center ">Selected days</div>
@@ -57,13 +49,121 @@
             </div>
           </div>
         </div>
+        <div class="form-group">
+          <label class="text-white col-form-label  ">Full Name</label>
+          <input
+            type="text"
+            :class="{ 'is-invalid': $v.userData.fullname.$invalid }"
+            class="form-control "
+            id="fullname"
+            placeholder="Enter Full Name"
+            v-model.trim="userData.fullname"
+          />
+          <div class="invalid-feedback">
+            Full name required
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-6">
+            <label for="email" class=" text-white col-form-label">Email</label>
+            <input
+              type="email"
+              :class="{ 'is-invalid': $v.userData.email.$invalid }"
+              class="form-control"
+              id="email"
+              placeholder="Email"
+              v-model.trim="userData.email"
+            />
+            <div class="invalid-feedback">
+              Email required.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="repeatEmail" class="text-white col-form-label"
+              >Verify Email</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="repeatEmail"
+              placeholder="Verify email"
+              :class="{ 'is-invalid': $v.userData.repeatEmail.$invalid }"
+              v-model.trim="userData.repeatEmail"
+            />
+            <div
+              v-if="
+                $v.userData.repeatEmail.$invalid && !$v.userData.email.$invalid
+              "
+              class="invalid-feedback"
+            >
+              Verification required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class=" text-light ">Account</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">101</span>
+            </div>
+            <input
+              type="text"
+              :class="{ 'is-invalid': $v.userData.account.$invalid }"
+              class="form-control"
+              id="account"
+              placeholder="This account willl be charged!"
+              v-model.trim="userData.account"
+            />
+            <div class="invalid-feedback">
+              Account required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class=" text-light ">Supervisor</label>
+
+          <input
+            type="text"
+            class="form-control"
+            id="supervisor"
+            placeholder="...if applicable"
+            v-model.trim="userData.supervisor"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="text-light ">Comments</label>
+          <textarea
+            class="form-control "
+            :class="{ 'is-invalid': $v.userData.comments.$invalid }"
+            placeholder="Provide info on what is to be analyzed, number of samples, sample preparations etc. "
+            id="comments"
+            cols="30"
+            rows="5"
+            v-model.trim="userData.comments"
+          ></textarea>
+          <div class="invalid-feedback">
+            Some basic info...
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2">
+            <input
+              type="submit"
+              value="Submit"
+              class="btn btn-primary"
+              :disabled="$v.userData.$invalid || userData.dates.length <= 0"
+            />
+          </div>
+        </div>
       </form>
-      <button @click="testing" class="btn btn-secondary">Test</button>
     </div>
   </div>
 </template>
 
 <script>
+import { sameAs, email, required, minLength } from "vuelidate/lib/validators";
 import Holidays from "../assets/dates";
 import f from "../func.js";
 
@@ -71,11 +171,13 @@ export default {
   props: ["unit", "table"],
   methods: {
     testing() {
-      let tt = f.daysBetween(
+      this.userData.selectedDays = f.daysBetween(
         this.userData.dates.start.getTime(),
         this.userData.dates.end.getTime()
       );
-      console.log(tt);
+
+      this.userData.status = f.carStatus(this.userData.dates.start);
+      console.log(this.userData);
     },
     showAlert() {
       this.$swal({
@@ -89,40 +191,35 @@ export default {
         confirmButtonText: "Yes"
       }).then(res => {
         if (res.value) {
-          this.$router.push("/selectItem/");
+          this.$router.push("/select/");
         } else {
           window.location.href = "http://jardvis.hi.is/";
         }
       });
     },
     submitting() {
-      let stat = f.status(this.userData);
       // selectedDays contains PHP timestamp
-      if (stat) {
-        this.userData.dates.forEach(element => {
-          this.userData.selectedDays.push(element.getTime() / 1000);
-        });
-        this.userData.account = `101-${this.userData.account}`;
-        this.$swal({
-          title: "Saving and sending email",
-          type: "info",
-          onBeforeOpen: () => {
-            this.$swal.showLoading();
-            this.$http.post("halfDayPostNew.php", this.userData).then(() => {
-              this.userData.selectedDays = [];
-              this.userData.dates = [];
-              this.$swal.disableLoading();
-              //this.showAlert();
-            });
-          }
-        });
-      } else {
-        this.$swal({
-          type: "error",
-          text: "Select AM, PM or both!",
-          timer: 3000
-        });
-      }
+      this.userData.selectedDays = f.daysBetween(
+        this.userData.dates.start.getTime(),
+        this.userData.dates.end.getTime()
+      );
+
+      this.userData.status = f.carStatus(this.userData.dates.start);
+
+      this.userData.account = `101-${this.userData.account}`;
+      this.$swal({
+        title: "Saving and sending email",
+        type: "info",
+        onBeforeOpen: () => {
+          this.$swal.showLoading();
+          this.$http.post("carPost.php", this.userData).then(() => {
+            this.userData.selectedDays = [];
+            this.userData.dates = [];
+            this.$swal.disableLoading();
+            this.showAlert();
+          });
+        }
+      });
     }
   },
   data() {
@@ -131,9 +228,7 @@ export default {
       pendingDays: [],
       reservedDays: [],
       userData: {
-        am: [],
-        pm: [],
-        status: [],
+        status: "",
         unit: "",
         table: "",
         dates: [],
@@ -194,17 +289,44 @@ export default {
     //1 is confirmed, 0 is pending -
     this.userData.unit = this.unit;
     this.userData.table = this.table;
-    this.$http.get(`getHalfDate.php?name=${this.userData.table}`).then(resp => {
+    this.$http.get(`getDate.php?name=${this.userData.table}`).then(resp => {
       f.assign(resp.data[0], this.pendingDays);
       f.assign(resp.data[1], this.disabledDates);
     });
+  },
+  validations: {
+    userData: {
+      fullname: {
+        required,
+        minLength: minLength(5)
+      },
+      email: {
+        required,
+        email
+      },
+      repeatEmail: {
+        required,
+        email,
+        sameAsEmail: sameAs("email")
+      },
+      account: {
+        required,
+        moLength: minLength(4)
+      },
+      comments: {
+        required,
+        minLength: minLength(6)
+      }
+    }
   }
 };
 </script>
 <style scoped>
-ul {
-  padding: 2rem;
+.card {
+  min-width: 220px !important;
+  min-height: 200px !important;
 }
+
 li {
   line-height: 1.35rem !important;
 }

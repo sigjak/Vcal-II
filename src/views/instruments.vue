@@ -1,7 +1,7 @@
 <template>
   <div>
     <img src="../images/header_01.png" class="img-fluid" />
-    <h1 class="text-center display-4  mt-4">{{ userData.unit }}</h1>
+    <h1 class="text-center text-light display-4  mt-4">{{ userData.unit }}</h1>
 
     <div class="container pb-5">
       <form @submit.prevent="submitting">
@@ -10,7 +10,7 @@
           v-if="userData.table == 'thin_sections'"
           class="border border-light rounded p-3"
         >
-          <h5>Select:</h5>
+          <h5 class="text-light">Select:</h5>
 
           <div class="row">
             <div class="form-group col-sm-3 ">
@@ -20,7 +20,7 @@
                 min="0"
                 class=" form-control form-control-sm"
               />
-              <p class=" text-center">
+              <p class=" text-center text-light">
                 27*46 mm slide
               </p>
             </div>
@@ -32,7 +32,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center">
+              <p class=" text-center text-light">
                 27*46 mm slide
                 <br />polished/coated
               </p>
@@ -45,7 +45,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center">
+              <p class=" text-center text-light">
                 1" round slide
               </p>
             </div>
@@ -57,7 +57,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center">
+              <p class=" text-center text-light">
                 1" round slide
                 <br />polished/coated
               </p>
@@ -71,7 +71,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center">
+              <p class=" text-center text-light">
                 1" round mount
                 <br />polished/coated
               </p>
@@ -84,7 +84,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class="text-center">
+              <p class="text-center text-light">
                 1" round mount- 7 samples
                 <br />polished/coated
               </p>
@@ -96,7 +96,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center">
+              <p class=" text-center text-light">
                 Carbon coating
               </p>
             </div>
@@ -107,7 +107,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class="text-center">
+              <p class="text-center text-light">
                 Repolishing and coating
               </p>
             </div>

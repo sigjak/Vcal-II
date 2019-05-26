@@ -1,9 +1,9 @@
 <template>
   <div>
-    <img src="../images/header_01.png" class="img-fluid" />
-    <h5 class="display-3 text-center mt-5">Select</h5>
+    <img src="../images/header_01.png" class="img-fluid mb-3" />
+    <h5 class="display-3 text-center text-light mt-5">Select</h5>
     <div class="container  ">
-      <div class="wrapper border boder-light rounded   p-4 ">
+      <div class="wrapper border border-light rounded   p-4 ">
         <div class="row ">
           <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
             <button class="btn btn-primary">Microprobe</button>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <img src="../images/header_01.png" class="img-fluid" />
-    <h1 class="text-center display-4  mt-4">{{ userData.unit }}</h1>
+    <h1 class="text-center text-light display-4  mt-4">{{ userData.unit }}</h1>
 
     <div class="container pb-5">
       <form @submit.prevent="submitting">
@@ -196,7 +196,7 @@ export default {
         confirmButtonText: "Yes"
       }).then(res => {
         if (res.value) {
-          this.$router.push("/selectItem/");
+          this.$router.push("/select/");
         } else {
           window.location.href = "http://jardvis.hi.is/";
         }
@@ -219,7 +219,7 @@ export default {
               this.userData.selectedDays = [];
               this.userData.dates = [];
               this.$swal.disableLoading();
-              //this.showAlert();
+              this.showAlert();
             });
           }
         });
