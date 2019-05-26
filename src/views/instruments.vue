@@ -377,9 +377,13 @@ export default {
         {
           key: "allday",
           highlight: {
-            class: "allbg",
-            contentClass: "bo"
+            class: "redbg",
+            contentClass: "whiteCont"
           },
+          // highlight: {
+          //   class: "allbg",
+          //   contentClass: "bo"
+          // },
           popover: {
             label: "Booked",
             hideIndicator: true
@@ -409,6 +413,9 @@ export default {
 };
 </script>
 <style scoped>
+.whiteCont {
+  color: #fff !important;
+}
 .card {
   min-width: 200px !important;
   min-height: 200px;

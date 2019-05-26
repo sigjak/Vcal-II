@@ -31,7 +31,7 @@ input[type="number"] {
   color: red;
 } */
 .tt {
-  background-color: #f9f9f9;
+  background-color: #f9f9f9e3;
 }
 .form-check-inline {
   margin-left: -0.5rem !important;
@@ -94,6 +94,12 @@ ul {
 }
 .amcontent {
   color: white !important;
+}
+.redbg {
+  background-color: rgb(250, 4, 4) !important;
+  border: 1px red solid !important;
+  border-radius: 50% !important;
+  opacity: 0.9;
 }
 .ba {
   background-color: #fff !important;
