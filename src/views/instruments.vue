@@ -8,9 +8,9 @@
         <!--                                      THIN SECTIONS                   -->
         <div
           v-if="userData.table == 'thin_sections'"
-          class="border border-light rounded p-3"
+          class="tt border border-light rounded p-3"
         >
-          <h5 class="text-light">Select:</h5>
+          <h5>Select:</h5>
 
           <div class="row">
             <div class="form-group col-sm-3 ">
@@ -20,7 +20,7 @@
                 min="0"
                 class=" form-control form-control-sm"
               />
-              <p class=" text-center text-light">
+              <p class=" text-center ">
                 27*46 mm slide
               </p>
             </div>
@@ -32,7 +32,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center text-light">
+              <p class=" text-center ">
                 27*46 mm slide
                 <br />polished/coated
               </p>
@@ -45,7 +45,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center text-light">
+              <p class=" text-center ">
                 1" round slide
               </p>
             </div>
@@ -57,7 +57,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center text-light">
+              <p class=" text-center ">
                 1" round slide
                 <br />polished/coated
               </p>
@@ -71,7 +71,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center text-light">
+              <p class=" text-center ">
                 1" round mount
                 <br />polished/coated
               </p>
@@ -84,7 +84,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class="text-center text-light">
+              <p class="text-center ">
                 1" round mount- 7 samples
                 <br />polished/coated
               </p>
@@ -96,7 +96,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center text-light">
+              <p class=" text-center ">
                 Carbon coating
               </p>
             </div>
@@ -107,7 +107,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class="text-center text-light">
+              <p class="text-center ">
                 Repolishing and coating
               </p>
             </div>
@@ -400,7 +400,7 @@ export default {
     this.userData.table = this.table;
     this.$http.get(`getDate.php?name=${this.userData.table}`).then(resp => {
       f.assign(resp.data[1], this.reservedDays);
-      console.log(this.reservedDays);
+
       this.disabledDates = this.disabledDates.concat(
         this.reservedDays,
         Holidays[1]
@@ -413,9 +413,6 @@ export default {
 };
 </script>
 <style scoped>
-.whiteCont {
-  color: #fff !important;
-}
 .card {
   min-width: 200px !important;
   min-height: 200px;

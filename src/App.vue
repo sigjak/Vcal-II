@@ -31,7 +31,7 @@ input[type="number"] {
   color: red;
 } */
 .tt {
-  background-color: #f9f9f9e3;
+  background-color: #f9f9f9b6;
 }
 .form-check-inline {
   margin-left: -0.5rem !important;
@@ -80,12 +80,15 @@ ul {
   pointer-events: auto !important;
   cursor: no-drop !important;
 }
-.ccc {
+/* .ccc {
   color: red !important;
   cursor: no-drop !important;
-}
+} */
 .allbg {
   background-color: #fff !important;
+}
+.whiteCont {
+  color: #fff !important;
 }
 .ambg {
   background-color: rgb(121, 144, 248) !important;
