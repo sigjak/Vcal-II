@@ -35,14 +35,24 @@
                   class="py-1"
                   v-if="typeof userData.dates.start !== 'undefined'"
                 >
+                  <li>From: {{ userData.dates.start.toDateString() }}</li>
                   <li>
-                    <span>From: {{ userData.dates.start.toDateString() }}</span>
+                    To: &nbsp;&nbsp;&nbsp;&nbsp;
+                    {{ userData.dates.end.toDateString() }}
                   </li>
                   <li>
-                    <span>
-                      To: &nbsp;&nbsp;&nbsp;&nbsp;
-                      {{ userData.dates.end.toDateString() }}</span
-                    >
+                    <div class="input-group mt-2 ml-2">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text bb">How many?</span>
+                      </div>
+                      <input
+                        type="number"
+                        class="form-control"
+                        :max="sdsd"
+                        name=""
+                        id=""
+                      />
+                    </div>
                   </li>
                 </ul>
               </div>
@@ -170,6 +180,15 @@ import f from "../func.js";
 export default {
   props: ["unit", "table"],
   methods: {
+    testing() {
+      this.userData.selectedDays = f.daysBetween(
+        this.userData.dates.start.getTime(),
+        this.userData.dates.end.getTime()
+      );
+
+      this.userData.status = f.carStatus(this.userData.dates.start);
+      console.log(this.userData);
+    },
     showAlert() {
       this.$swal({
         showCloseButton: true,
@@ -215,11 +234,12 @@ export default {
   },
   data() {
     return {
+      sdsd: 5,
       disabledDates: [],
-      pendingDays: [],
-      reservedDays: [],
+      availableDays: [],
+      statusDays: [],
       userData: {
-        status: "",
+        status: [],
         unit: "",
         table: "",
         dates: [],
@@ -258,20 +278,25 @@ export default {
             hideIndicator: true
           },
           dates: this.disabledDates
-        },
-        {
-          key: "pending",
+        }
+      ];
+
+      const arrLength = this.statusDays.length;
+      for (let i = 0; i < arrLength; i++) {
+        const temp = {
           highlight: {
             class: "ambg",
             contentClass: "amcontent"
           },
           popover: {
-            label: "Requested",
+            label: `Available: ${this.statusDays[i]}`,
             hideIndicator: true
           },
-          dates: this.pendingDays
-        }
-      ];
+          dates: this.availableDays[i]
+        };
+        attrs.push(temp);
+      }
+      console.log(attrs);
       return attrs;
     }
   },
@@ -280,9 +305,11 @@ export default {
     //1 is confirmed, 0 is pending -
     this.userData.unit = this.unit;
     this.userData.table = this.table;
-    this.$http.get(`getDate.php?name=${this.userData.table}`).then(resp => {
-      f.assign(resp.data[0], this.pendingDays);
-      f.assign(resp.data[1], this.disabledDates);
+    this.$http.get(`getHouse.php?name=${this.userData.table}`).then(resp => {
+      console.log(resp);
+      f.assign(resp.data[0], this.availableDays);
+      this.statusDays = resp.data[1];
+      f.assign(resp.data[2], this.disabledDates);
     });
   },
   validations: {
@@ -313,6 +340,15 @@ export default {
 };
 </script>
 <style scoped>
+.input-group {
+  width: 80%;
+}
+.bb {
+  font-size: 70%;
+}
+input[type="number"] {
+  width: 50px !important;
+}
 .card {
   min-width: 220px !important;
   min-height: 200px !important;

@@ -4,6 +4,7 @@ import Select from "./views/selectItems.vue";
 import AMPM from "./views/ampm.vue";
 import Cars from "./views/Cars.vue";
 import Instruments from "./views/instruments.vue";
+import Houses from './views/houses.vue'
 
 Vue.use(Router);
 
@@ -32,6 +33,12 @@ export default new Router({
       name: "cars",
       component: Cars,
       props: true
+    },
+    {
+      path:"/houses",
+      name:'houses',
+      component:Houses,
+      props:true
     }
   ]
 });

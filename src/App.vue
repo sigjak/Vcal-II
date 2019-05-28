@@ -84,36 +84,34 @@ ul {
   color: red !important;
   cursor: no-drop !important;
 } */
-.allbg {
+.whiteBackground {
   background-color: #fff !important;
 }
-.whiteCont {
+.whiteContent {
   color: #fff !important;
 }
 .ambg {
-  background-color: rgb(121, 144, 248) !important;
+  background-color: rgb(121, 151, 248) !important;
   border: 1px solid !important;
   border-radius: 50% !important;
 }
 .amcontent {
   color: white !important;
 }
-.redbg {
+.redBackground {
   background-color: rgb(250, 4, 4) !important;
   border: 1px red solid !important;
   border-radius: 50% !important;
   opacity: 0.9;
 }
-.ba {
+.redCircle {
   background-color: #fff !important;
-
   border: 1.5px solid red !important;
   border-radius: 50% !important;
   opacity: 0.5;
 }
-.bo {
+.redContent {
   color: red !important;
-  z-index: 100;
   font-style: italic;
 }
 </style>

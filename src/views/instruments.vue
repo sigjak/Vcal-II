@@ -365,8 +365,8 @@ export default {
       const attrs = [
         {
           highlight: {
-            class: "ba",
-            contentClass: "bo"
+            class: "redCircle",
+            contentClass: "redContent"
           },
           popover: {
             label: "Holiday",
@@ -377,8 +377,8 @@ export default {
         {
           key: "allday",
           highlight: {
-            class: "redbg",
-            contentClass: "whiteCont"
+            class: "redBackground",
+            contentClass: "whiteContent"
           },
           // highlight: {
           //   class: "allbg",

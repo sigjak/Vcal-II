@@ -76,7 +76,17 @@
               >
             </div>
 
-            <button class="btn btn-primary">Some text</button>
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'houses',
+                  params: { unit: 'Helluhraun', table: 'helluhraun' }
+                }"
+              >
+                Helluhraun</router-link
+              >
+            </div>
           </div>
         </div>
         <div class="row ">
