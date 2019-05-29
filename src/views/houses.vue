@@ -24,6 +24,7 @@
               :disabled-dates="disabledDates"
               :attributes="attrs"
               is-inline
+              @input="setMax"
             />
           </div>
 
@@ -40,21 +41,22 @@
                     To: &nbsp;&nbsp;&nbsp;&nbsp;
                     {{ userData.dates.end.toDateString() }}
                   </li>
-                  <li>
-                    <div class="input-group mt-2 ml-2">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text bb">How many?</span>
-                      </div>
-                      <input
-                        type="number"
-                        class="form-control"
-                        :max="sdsd"
-                        name=""
-                        id=""
-                      />
-                    </div>
-                  </li>
                 </ul>
+                <div
+                  class="input-group mt-2 mx-auto"
+                  v-show="typeof userData.dates.start !== 'undefined'"
+                >
+                  <div class="input-group-prepend">
+                    <span class="input-group-text bb">How many?</span>
+                  </div>
+                  <input
+                    v-model="userData.status"
+                    type="number"
+                    class="form-control"
+                    id="ip"
+                    max=""
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -180,14 +182,31 @@ import f from "../func.js";
 export default {
   props: ["unit", "table"],
   methods: {
+    setMax() {
+      const inp = document.getElementById("ip");
+      this.userData.status = "";
+      this.userData.selectedDays = f.daysBetween(
+        this.userData.dates.start.getTime(),
+        this.userData.dates.end.getTime()
+      );
+      let g = [];
+      this.userData.selectedDays.forEach(element => {
+        const temp = this.compareDays.indexOf(element);
+        if (temp !== -1) {
+          g.push(this.statusDays[temp]);
+        }
+      });
+      if (g.length > 0) {
+        inp.max = +Math.min.apply(null, g);
+      } else {
+        inp.max = this.maxOccupancy;
+      }
+    },
     testing() {
       this.userData.selectedDays = f.daysBetween(
         this.userData.dates.start.getTime(),
         this.userData.dates.end.getTime()
       );
-
-      this.userData.status = f.carStatus(this.userData.dates.start);
-      console.log(this.userData);
     },
     showAlert() {
       this.$swal({
@@ -234,10 +253,11 @@ export default {
   },
   data() {
     return {
-      sdsd: 5,
+      compareDays: [],
       disabledDates: [],
       availableDays: [],
       statusDays: [],
+      maxOccupancy: "",
       userData: {
         status: [],
         unit: "",
@@ -296,7 +316,7 @@ export default {
         };
         attrs.push(temp);
       }
-      console.log(attrs);
+
       return attrs;
     }
   },
@@ -306,10 +326,14 @@ export default {
     this.userData.unit = this.unit;
     this.userData.table = this.table;
     this.$http.get(`getHouse.php?name=${this.userData.table}`).then(resp => {
-      console.log(resp);
+      console.log(resp.data);
       f.assign(resp.data[0], this.availableDays);
+      this.compareDays = resp.data[0].map(element => {
+        return element / 1000;
+      });
       this.statusDays = resp.data[1];
       f.assign(resp.data[2], this.disabledDates);
+      this.maxOccupancy = resp.data[3];
     });
   },
   validations: {
