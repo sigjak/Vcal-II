@@ -54,8 +54,14 @@
                     type="number"
                     class="form-control"
                     id="ip"
+                    min="1"
                     max=""
+                    v-on:keyup="maxGuard"
+                    :class="{ 'is-invalid': $v.userData.status.$invalid }"
                   />
+                  <div class="invalid-feedback">
+                    Enter a number
+                  </div>
                 </div>
               </div>
             </div>
@@ -182,6 +188,10 @@ import f from "../func.js";
 export default {
   props: ["unit", "table"],
   methods: {
+    maxGuard() {
+      const inp = document.getElementById("ip");
+      if (this.userData.status > inp.max) this.userData.status = "";
+    },
     setMax() {
       const inp = document.getElementById("ip");
       this.userData.status = "";
@@ -326,7 +336,6 @@ export default {
     this.userData.unit = this.unit;
     this.userData.table = this.table;
     this.$http.get(`getHouse.php?name=${this.userData.table}`).then(resp => {
-      console.log(resp.data);
       f.assign(resp.data[0], this.availableDays);
       this.compareDays = resp.data[0].map(element => {
         return element / 1000;
@@ -338,6 +347,10 @@ export default {
   },
   validations: {
     userData: {
+      status: {
+        required,
+        minLength: minLength(1)
+      },
       fullname: {
         required,
         minLength: minLength(5)
@@ -372,9 +385,10 @@ export default {
 }
 input[type="number"] {
   width: 50px !important;
+  text-align: center;
 }
 .card {
-  min-width: 220px !important;
+  min-width: 250px !important;
   min-height: 200px !important;
 }
 
