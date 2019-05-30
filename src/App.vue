@@ -13,10 +13,7 @@ input[type="number"] {
   width: 50px;
   margin: 0 auto;
 }
-.error {
-  border-color: red;
-  color: red;
-}
+
 .tt {
   background-color: #f9f9f9b6;
 }

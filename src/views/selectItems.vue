@@ -6,13 +6,23 @@
       <div class="wrapper border border-light rounded   p-4 ">
         <div class="row ">
           <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
-            <button class="btn btn-primary">Microprobe</button>
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'houses',
+                  params: { unit: 'Viðimelur', table: 'vidimelur' }
+                }"
+              >
+                Víðimelur</router-link
+              >
+            </div>
             <button class="btn  btn-primary">FTIR</button>
             <button class="btn btn-primary">SEM</button>
           </div>
           <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
             <button class="btn btn-primary">Gas Detectors</button>
-            <button class="btn btn-primary ">Víðimelur</button>
+
             <button class="btn btn-primary">Some text</button>
           </div>
         </div>

@@ -1,13 +1,10 @@
 <template>
-  <!-- 1 is confirmed, 0 is pending -->
   <div>
     <img src="../images/header_01.png" class="img-fluid" />
     <h1 class="text-center text-light display-4  mt-4">{{ userData.unit }}</h1>
 
     <div class="container pb-5">
       <form @submit.prevent="submitting">
-        <!--                                      THIN SECTIONS                   -->
-
         <div
           class=" tt mt-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg "
         >
@@ -52,16 +49,19 @@
                   <input
                     v-model="userData.status"
                     type="number"
-                    class="form-control"
+                    class="form-control "
                     id="ip"
+                    :class="{ asas: $v.userData.status.$invalid }"
                     min="1"
                     max=""
                     v-on:keyup="maxGuard"
-                    :class="{ 'is-invalid': $v.userData.status.$invalid }"
                   />
-                  <div class="invalid-feedback">
+                  <span
+                    class="hide"
+                    :class="{ rr: $v.userData.status.$invalid }"
+                  >
                     Enter a number
-                  </div>
+                  </span>
                 </div>
               </div>
             </div>
@@ -212,12 +212,7 @@ export default {
         inp.max = this.maxOccupancy;
       }
     },
-    testing() {
-      this.userData.selectedDays = f.daysBetween(
-        this.userData.dates.start.getTime(),
-        this.userData.dates.end.getTime()
-      );
-    },
+
     showAlert() {
       this.$swal({
         showCloseButton: true,
@@ -238,12 +233,6 @@ export default {
     },
     submitting() {
       // selectedDays contains PHP timestamp
-      this.userData.selectedDays = f.daysBetween(
-        this.userData.dates.start.getTime(),
-        this.userData.dates.end.getTime()
-      );
-
-      this.userData.status = f.carStatus(this.userData.dates.start);
 
       this.userData.account = `101-${this.userData.account}`;
       this.$swal({
@@ -251,7 +240,7 @@ export default {
         type: "info",
         onBeforeOpen: () => {
           this.$swal.showLoading();
-          this.$http.post("carPost.php", this.userData).then(() => {
+          this.$http.post("housePost.php", this.userData).then(() => {
             this.userData.selectedDays = [];
             this.userData.dates = [];
             this.$swal.disableLoading();
@@ -332,7 +321,6 @@ export default {
   },
 
   created() {
-    //1 is confirmed, 0 is pending -
     this.userData.unit = this.unit;
     this.userData.table = this.table;
     this.$http.get(`getHouse.php?name=${this.userData.table}`).then(resp => {
@@ -377,6 +365,20 @@ export default {
 };
 </script>
 <style scoped>
+.hide {
+  display: none;
+}
+.rr {
+  display: block;
+  color: red !important;
+  font-size: 60%;
+}
+.asas {
+  display: block !important;
+  padding: 0;
+  border-color: red !important;
+  color: red !important;
+}
 .input-group {
   width: 80%;
 }
@@ -388,7 +390,7 @@ input[type="number"] {
   text-align: center;
 }
 .card {
-  min-width: 250px !important;
+  min-width: 230px !important;
   min-height: 200px !important;
 }
 
