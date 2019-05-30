@@ -15,7 +15,7 @@ input[type="number"] {
 }
 
 .tt {
-  background-color: #f9f9f9b6;
+  background-color: #f9f9f9b6 !important;
 }
 .form-check-inline {
   margin-left: -0.5rem !important;

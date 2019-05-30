@@ -17,7 +17,18 @@
                 Víðimelur</router-link
               >
             </div>
-            <button class="btn  btn-primary">FTIR</button>
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'houses',
+                  params: { unit: 'Dyngja', table: 'dyngja' }
+                }"
+              >
+                Dyngja</router-link
+              >
+            </div>
+
             <button class="btn btn-primary">SEM</button>
           </div>
           <div class="col-md-6 d-flex justify-content-around mt-2 p-0">

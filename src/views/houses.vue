@@ -50,8 +50,8 @@
                     v-model="userData.status"
                     type="number"
                     class="form-control "
+                    :class="{ bord: $v.userData.status.$invalid }"
                     id="ip"
-                    :class="{ asas: $v.userData.status.$invalid }"
                     min="1"
                     max=""
                     v-on:keyup="maxGuard"
@@ -67,12 +67,12 @@
             </div>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group ">
           <label class="text-white col-form-label  ">Full Name</label>
           <input
             type="text"
             :class="{ 'is-invalid': $v.userData.fullname.$invalid }"
-            class="form-control "
+            class="form-control  "
             id="fullname"
             placeholder="Enter Full Name"
             v-model.trim="userData.fullname"
@@ -87,7 +87,7 @@
             <input
               type="email"
               :class="{ 'is-invalid': $v.userData.email.$invalid }"
-              class="form-control"
+              class="form-control "
               id="email"
               placeholder="Email"
               v-model.trim="userData.email"
@@ -102,7 +102,7 @@
             >
             <input
               type="email"
-              class="form-control"
+              class="form-control "
               id="repeatEmail"
               placeholder="Verify email"
               :class="{ 'is-invalid': $v.userData.repeatEmail.$invalid }"
@@ -127,7 +127,7 @@
             <input
               type="text"
               :class="{ 'is-invalid': $v.userData.account.$invalid }"
-              class="form-control"
+              class="form-control "
               id="account"
               placeholder="This account willl be charged!"
               v-model.trim="userData.account"
@@ -142,7 +142,7 @@
 
           <input
             type="text"
-            class="form-control"
+            class="form-control "
             id="supervisor"
             placeholder="...if applicable"
             v-model.trim="userData.supervisor"
@@ -152,9 +152,9 @@
         <div class="form-group">
           <label class="text-light ">Comments</label>
           <textarea
-            class="form-control "
+            class="form-control  "
             :class="{ 'is-invalid': $v.userData.comments.$invalid }"
-            placeholder="Provide info on what is to be analyzed, number of samples, sample preparations etc. "
+            :placeholder="place"
             id="comments"
             cols="30"
             rows="5"
@@ -252,6 +252,7 @@ export default {
   },
   data() {
     return {
+      // place: "Provide some basic infor, how to contact GSM mobile etc.",
       compareDays: [],
       disabledDates: [],
       availableDays: [],
@@ -317,6 +318,14 @@ export default {
       }
 
       return attrs;
+    },
+    place() {
+      let place = "Provide some basic info, how to contact GSM mobile etc.";
+      if (this.table === "vidimelur") {
+        place =
+          "Further information if needed and where to send the invoice if applicable";
+      }
+      return place;
     }
   },
 
@@ -368,6 +377,9 @@ export default {
 .hide {
   display: none;
 }
+.bord {
+  border: 1px solid red;
+}
 .rr {
   display: block;
   color: red !important;
@@ -387,7 +399,6 @@ export default {
 }
 input[type="number"] {
   width: 50px !important;
-  text-align: center;
 }
 .card {
   min-width: 230px !important;
