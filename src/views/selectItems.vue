@@ -1,6 +1,5 @@
 <template>
   <div>
-    <img src="../images/header_01.png" class="img-fluid mb-5" />
     <h5 class="display-3 text-center text-light mt-5">Select</h5>
     <div class="container  ">
       <div class="wrapper border border-light rounded   p-4 ">

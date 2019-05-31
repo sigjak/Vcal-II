@@ -1,6 +1,5 @@
 <template>
   <div>
-    <img src="../images/header_01.png" class="img-fluid" />
     <h1 class="text-center text-light display-4  mt-4">{{ userData.unit }}</h1>
 
     <div class="container pb-5">
@@ -9,13 +8,13 @@
           class=" tt mt-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg "
         >
           <div class="col-12 text-center">
-            <h1>Select days</h1>
+            <h1 class="text-muted">Select days</h1>
           </div>
 
-          <div class="col-12 col-lg-auto mt-3">
+          <div class="col-auto mt-3">
             <v-date-picker
               mode="multiple"
-              :columns="$screens({ default: 1, md: 2 })"
+              :columns="$screens({ default: 1, lg: 2 })"
               :firstDayOfWeek="2"
               v-model="userData.dates"
               :disabled-dates="disabledDates"
@@ -24,7 +23,7 @@
             />
           </div>
 
-          <div class="col-10 col-lg-auto">
+          <div class="col-auto">
             <div class=" card mt-3">
               <div class="card-header text-center ">Selected days</div>
               <div class="card-body pt-0 pl-2">

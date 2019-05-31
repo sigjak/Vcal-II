@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <img src="./images/header_01.png" class="img-fluid" />
     <router-view />
   </div>
 </template>
@@ -15,7 +16,7 @@ input[type="number"] {
 }
 
 .tt {
-  background-color: #f9f9f9b6 !important;
+  background-image: linear-gradient(to right, #f9f9f98e, #f9f9f938) !important;
 }
 .form-check-inline {
   margin-left: -0.5rem !important;
