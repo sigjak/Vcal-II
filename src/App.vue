@@ -40,9 +40,13 @@ label {
 .cont {
   color: red !important;
 }
-.vc-header {
+.vc-arrows-container {
   background: #edb862;
-  padding-bottom: 5px;
+  border: 2px solid #edb862;
+  border-radius: 7px 7px 0 0;
+}
+.vc-header {
+  z-index: 1;
 }
 .vc-title-layout {
   padding-bottom: 10px;
@@ -77,7 +81,7 @@ ul {
 }
 .ambg {
   background-color: rgb(121, 151, 248) !important;
-  border: 1px solid !important;
+  border: 1px solid rgb(121, 151, 248) !important;
   border-radius: 50% !important;
 }
 .amcontent {
