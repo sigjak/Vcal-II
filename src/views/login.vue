@@ -34,7 +34,7 @@
             <div class="col-8 ">
               <button
                 class=" btn btn-sm btn-primary  mb-3"
-                @click.prevent="$router.push('/select')"
+                @click.prevent="$router.push('/selectItem')"
                 :disabled="$v.login.$invalid || $v.password.$invalid"
               >
                 Submit

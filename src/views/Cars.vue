@@ -39,7 +39,7 @@
                   </li>
                   <li>
                     <span>
-                      To: &nbsp;&nbsp;&nbsp;&nbsp;
+                      To: &nbsp;&nbsp;&nbsp;
                       {{ userData.dates.end.toDateString() }}</span
                     >
                   </li>

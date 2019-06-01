@@ -29,31 +29,26 @@
               <div class="card-body pt-0 pl-2">
                 <ul v-if="userData.dates.length">
                   <li v-for="(day, index) in userData.dates" :key="index">
-                    <span
-                      v-if="
-                        userData.table === 'ftir' || userData.table === 'sem'
-                      "
-                    >
-                      <span v-if="amShow[index]">
-                        <input
-                          type="checkbox"
-                          id="am"
-                          value="am"
-                          v-model="userData.am[index]"
-                        />
+                    <span v-if="amShow[index]">
+                      <input
+                        type="checkbox"
+                        id="am"
+                        value="am"
+                        v-model="userData.am[index]"
+                      />
 
-                        <label class="mx-1">AM</label>
-                      </span>
-                      <span v-if="pmShow[index]">
-                        <input
-                          type="checkbox"
-                          id="pm"
-                          value="pm"
-                          v-model="userData.pm[index]"
-                        />
-                        <label class="mx-1">PM</label>
-                      </span>
+                      <label class="mr-2">AM</label>
                     </span>
+                    <span v-if="pmShow[index]">
+                      <input
+                        type="checkbox"
+                        id="pm"
+                        value="pm"
+                        v-model="userData.pm[index]"
+                      />
+                      <label>PM</label>
+                    </span>
+
                     {{ day.toDateString() }}
                   </li>
                 </ul>

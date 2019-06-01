@@ -17,8 +17,8 @@ export default new Router({
       component: Login
     },
     {
-      path: "/select",
-      name: "select",
+      path: "/selectItem",
+      name: "selectItem",
       component: Select
     },
     {
