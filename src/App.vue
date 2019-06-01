@@ -45,7 +45,10 @@ label {
   border: 2px solid #edb862;
   border-radius: 7px 7px 0 0;
 }
-
+.vc-arrows-container {
+  border-top: 4px solid #edb862 !important;
+  border-radius: 7px 7px 0 0;
+}
 .vc-title-layout {
   padding-bottom: 10px;
 }
