@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1 class="text-center text-light display-4  mt-4">{{ userData.unit }}</h1>
+    <h1 class="text-center text-light display-4  my-5">{{ userData.unit }}</h1>
 
     <div class="container pb-5">
       <form @submit.prevent="submitting">
         <!--                                      THIN SECTIONS                   -->
         <div
           v-if="userData.table == 'thin_sections'"
-          class="tt border border-light rounded p-3"
+          class="linBg border border-light rounded p-3"
         >
           <h5>Select:</h5>
 
@@ -19,7 +19,7 @@
                 min="0"
                 class=" form-control form-control-sm"
               />
-              <p class=" text-center ">
+              <p class=" text-center font-weight-bold">
                 27*46 mm slide
               </p>
             </div>
@@ -31,7 +31,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center ">
+              <p class=" text-center font-weight-bold">
                 27*46 mm slide
                 <br />polished/coated
               </p>
@@ -44,7 +44,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center ">
+              <p class=" text-center font-weight-bold">
                 1" round slide
               </p>
             </div>
@@ -56,7 +56,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center ">
+              <p class=" text-center font-weight-bold">
                 1" round slide
                 <br />polished/coated
               </p>
@@ -70,7 +70,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center ">
+              <p class=" text-center font-weight-bold ">
                 1" round mount
                 <br />polished/coated
               </p>
@@ -83,9 +83,8 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class="text-center ">
-                1" round mount- 7 samples
-                <br />polished/coated
+              <p class="text-center font-weight-bold">
+                1" round mount <br />7 spl polished/coated
               </p>
             </div>
             <div class="form-group col-sm-3 text-center">
@@ -95,7 +94,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center ">
+              <p class=" text-center font-weight-bold">
                 Carbon coating
               </p>
             </div>
@@ -106,7 +105,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class="text-center ">
+              <p class="text-center font-weight-bold ">
                 Repolishing and coating
               </p>
             </div>
@@ -115,7 +114,7 @@
 
         <div
           v-if="userData.table !== 'thin_sections'"
-          class=" tt mt-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg "
+          class=" linBg mt-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg "
         >
           <div class="col-12 text-center">
             <h2 class="text-muted">Select days</h2>

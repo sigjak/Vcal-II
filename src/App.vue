@@ -15,7 +15,7 @@ input[type="number"] {
   margin: 0 auto;
 }
 
-.tt {
+.linBg {
   background-image: linear-gradient(to right, #f9f9f98e, #f9f9f938) !important;
 }
 .form-check-inline {

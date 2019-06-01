@@ -5,10 +5,10 @@
     <div class="container pb-5">
       <form @submit.prevent="submitting">
         <div
-          class=" tt mt-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg "
+          class=" linBg mt-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg "
         >
           <div class="col-12 text-center">
-            <h2>Select days</h2>
+            <h2 class="text-muted">Select days</h2>
           </div>
 
           <div class="col-auto mt-3">
@@ -57,7 +57,7 @@
                   />
                   <span
                     class="hide"
-                    :class="{ rr: $v.userData.status.$invalid }"
+                    :class="{ err: $v.userData.status.$invalid }"
                   >
                     Enter a number
                   </span>
@@ -126,7 +126,7 @@
             <input
               type="text"
               :class="{ 'is-invalid': $v.userData.account.$invalid }"
-              class="form-control "
+              class="form-control"
               id="account"
               placeholder="This account willl be charged!"
               v-model.trim="userData.account"
@@ -379,18 +379,13 @@ export default {
 .bord {
   border: 1px solid red;
 }
-.rr {
+.err {
   display: block;
   color: red !important;
   font-size: 60%;
 }
-.asas {
-  display: block !important;
-  padding: 0;
-  border-color: red !important;
-  color: red !important;
-}
-.input-group {
+
+.card-body .input-group {
   width: 80%;
 }
 .bb {
