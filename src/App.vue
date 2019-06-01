@@ -14,6 +14,13 @@ input[type="number"] {
   width: 50px;
   margin: 0 auto;
 }
+.logBg {
+  background-image: linear-gradient(
+    to right,
+    rgba(26, 24, 24, 0.507),
+    rgba(32, 30, 30, 0.11)
+  );
+}
 
 .linBg {
   background-image: linear-gradient(to right, #f9f9f98e, #f9f9f938) !important;

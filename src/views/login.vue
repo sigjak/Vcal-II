@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="container">
-      <div class="d-flex justify-content-center align-items-center vport">
-        <form class="border  border-primary rounded tt pr-5 pl-1 py-2">
+      <div class="d-flex justify-content-center align-items-center  vport">
+        <form class="border  border-primary rounded logBg pr-5 pl-1 py-2">
           <div class="form-group px-5 pt-5 row ">
-            <label class="text-muted col-3">login</label>
+            <label class="text-light col-3">login</label>
             <div class="col-9">
               <input
                 type="text"
@@ -17,7 +17,7 @@
           </div>
 
           <div class="form-group row px-5">
-            <label class="text-muted col-3">password</label>
+            <label class="text-light col-3">password</label>
             <div class="col-9">
               <input
                 type="password"
