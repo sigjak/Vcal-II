@@ -40,14 +40,12 @@ label {
 .cont {
   color: red !important;
 }
-.vc-arrows-container {
-  background: #edb862;
+.vc-header {
+  background-color: #edb862;
   border: 2px solid #edb862;
   border-radius: 7px 7px 0 0;
 }
-.vc-header {
-  z-index: 1;
-}
+
 .vc-title-layout {
   padding-bottom: 10px;
 }
