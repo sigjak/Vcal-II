@@ -9,39 +9,6 @@
               <router-link
                 class="btn btn-primary"
                 :to="{
-                  name: 'houses',
-                  params: { unit: 'Viðimelur', table: 'vidimelur' }
-                }"
-              >
-                Víðimelur</router-link
-              >
-            </div>
-            <div>
-              <router-link
-                class="btn btn-primary"
-                :to="{
-                  name: 'houses',
-                  params: { unit: 'Dyngja', table: 'dyngja' }
-                }"
-              >
-                Dyngja</router-link
-              >
-            </div>
-
-            <button class="btn btn-primary">SEM</button>
-          </div>
-          <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
-            <button class="btn btn-primary">Gas Detectors</button>
-
-            <button class="btn btn-primary">Some text</button>
-          </div>
-        </div>
-        <div class="row ">
-          <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
-            <div>
-              <router-link
-                class="btn btn-primary"
-                :to="{
                   name: 'instruments',
                   params: { unit: 'Microprobe', table: 'probeuse' }
                 }"
@@ -53,13 +20,14 @@
               <router-link
                 class="btn btn-primary"
                 :to="{
-                  name: 'ampm',
-                  params: { unit: 'FTIR', table: 'ftir' }
+                  name: 'instruments',
+                  params: { unit: 'Thin sections', table: 'thin_sections' }
                 }"
               >
-                FTIR</router-link
+                Thin sections</router-link
               >
             </div>
+
             <div>
               <router-link
                 class="btn btn-primary"
@@ -77,11 +45,192 @@
               <router-link
                 class="btn btn-primary"
                 :to="{
-                  name: 'instruments',
-                  params: { unit: 'Thin sections', table: 'thin_sections' }
+                  name: 'ampm',
+                  params: { unit: 'FTIR', table: 'ftir' }
                 }"
               >
-                Thin sections</router-link
+                FTIR</router-link
+              >
+            </div>
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'instruments',
+                  params: { unit: 'ICP OES', table: 'icpoes' }
+                }"
+              >
+                ICP OES</router-link
+              >
+            </div>
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'instruments',
+                  params: { unit: 'ICP MS', table: 'icpms' }
+                }"
+              >
+                ICP MS</router-link
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row ">
+          <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'instruments',
+                  params: { unit: 'MassSpec AES', table: 'massaes' }
+                }"
+              >
+                MassSpec AES</router-link
+              >
+            </div>
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'instruments',
+                  params: { unit: 'IC 1000', table: 'ic1000' }
+                }"
+              >
+                IC 1000</router-link
+              >
+            </div>
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'instruments',
+                  params: { unit: 'IC 2000', table: 'ic2000' }
+                }"
+              >
+                IC 2000</router-link
+              >
+            </div>
+          </div>
+          <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'cars',
+                  params: { unit: 'Viking A', table: 'viking_a' }
+                }"
+              >
+                Viking A</router-link
+              >
+            </div>
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'cars',
+                  params: { unit: 'Viking B', table: 'viking_b' }
+                }"
+              >
+                Viking B</router-link
+              >
+            </div>
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'cars',
+                  params: { unit: 'Warrior', table: 'warrior' }
+                }"
+              >
+                Warrior</router-link
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row ">
+          <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'cars',
+                  params: { unit: 'Open Trailer', table: 'opentariler' }
+                }"
+              >
+                Open Trailer</router-link
+              >
+            </div>
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'cars',
+                  params: { unit: 'Closed Trailer', table: 'closedtrailer' }
+                }"
+              >
+                Closed Trailer</router-link
+              >
+            </div>
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'cars',
+                  params: { unit: 'Small Trailer', table: 'smalltrailer' }
+                }"
+              >
+                Small Trailer</router-link
+              >
+            </div>
+          </div>
+          <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'houses',
+                  params: { unit: 'First Aid', table: 'firstaid' }
+                }"
+              >
+                First Aid</router-link
+              >
+            </div>
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'houses',
+                  params: { unit: 'Gas Detectors', table: 'gasdetect' }
+                }"
+              >
+                Gas Detectors</router-link
+              >
+            </div>
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'houses',
+                  params: { unit: 'Iridium Sat Phones', table: 'iridium' }
+                }"
+              >
+                IR Sat Phones</router-link
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row ">
+          <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'cars',
+                  params: { unit: 'Red Hilux', table: 'red_hilux' }
+                }"
+              >
+                Red Hilux</router-link
               >
             </div>
             <div>
@@ -95,7 +244,19 @@
                 Blue Hilux</router-link
               >
             </div>
-
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'houses',
+                  params: { unit: 'Dyngja', table: 'dyngja' }
+                }"
+              >
+                Dyngja</router-link
+              >
+            </div>
+          </div>
+          <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
                 class="btn btn-primary"
@@ -107,12 +268,46 @@
                 Helluhraun</router-link
               >
             </div>
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'houses',
+                  params: { unit: 'Víðimelur', table: 'vidimelur' }
+                }"
+              >
+                Víðimelur</router-link
+              >
+            </div>
+            <div>
+              <button class="btn btn-primary">Storage</button>
+            </div>
           </div>
         </div>
         <div class="row ">
           <div class="col-lg-12 d-flex justify-content-around  mt-2 p-0">
-            <button class=" btn btn-primary">Microprobe</button>
-            <button class=" btn  btn-primary">FTIR</button>
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'instruments',
+                  params: { unit: 'ICP-OES-II', table: 'icpoes2' }
+                }"
+              >
+                ICP-OES II</router-link
+              >
+            </div>
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'instruments',
+                  params: { unit: 'MC-ICP-MS', table: 'mcicpms' }
+                }"
+              >
+                MC-ICP-MS</router-link
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -126,7 +321,7 @@ export default {};
 
 <style>
 .btn {
-  width: 100px;
+  width: 110px;
   font-size: 12px !important;
 }
 
