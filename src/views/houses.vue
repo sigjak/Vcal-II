@@ -224,7 +224,7 @@ export default {
         confirmButtonText: "Yes"
       }).then(res => {
         if (res.value) {
-          this.$router.push("/select/");
+          this.$router.push("/selectItem/");
         } else {
           window.location.href = "http://jardvis.hi.is/";
         }
