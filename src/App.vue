@@ -49,17 +49,15 @@ input[type="checkbox"] {
 .card-header {
   color: black !important;
   font-weight: 600 !important;
-}
-.card-header {
   background-color: #edb862 !important;
 }
 
 label {
   font-size: 0.9rem !important;
 }
-.cont {
+/* .cont {
   color: red !important;
-}
+} */
 .vc-header {
   background-color: #edb862;
   border: 2px solid #edb862;
