@@ -261,7 +261,7 @@ export default {
         {
           key: "pending",
           highlight: {
-            class: "ambg",
+            class: "bluebg",
             contentClass: "amcontent"
           },
           popover: {

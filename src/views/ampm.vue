@@ -319,7 +319,7 @@ export default {
         {
           key: "pm",
           highlight: {
-            class: "ambg",
+            class: "pmbg",
             contentClass: "amcontent"
           },
           popover: {

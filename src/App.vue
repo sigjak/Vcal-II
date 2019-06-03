@@ -1,11 +1,29 @@
 <template>
   <div id="app">
     <img src="./images/header_01.png" class="img-fluid" />
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-outline-light btn-sm mr-5 btnExit" @click="redir">
+        Exit
+      </button>
+    </div>
     <router-view />
   </div>
 </template>
-
+<script>
+export default {
+  methods: {
+    redir() {
+      window.location.href = "http://jardvis.hi.is/";
+    }
+  }
+};
+</script>
 <style>
+.btnExit {
+  margin-top: -40px;
+  width: 60px !important;
+  height: 30px !important;
+}
 body {
   background: url("./images/dawn.jpg") no-repeat center center fixed;
   background-size: cover;
@@ -88,12 +106,36 @@ ul {
   color: #fff !important;
 }
 .ambg {
-  background-color: rgb(121, 151, 248) !important;
+  /* background-color: rgb(121, 151, 248) !important;*/
+  background: linear-gradient(
+    to right,
+    red 0%,
+    red 50%,
+    blue 50%,
+    blue 100%
+  ) !important;
+  border: 1px solid rgb(121, 151, 248) !important;
+  border-radius: 50% !important;
+}
+.pmbg {
+  /* background-color: rgb(121, 151, 248) !important;*/
+  background: linear-gradient(
+    to right,
+    blue 0%,
+    blue 50%,
+    red 50%,
+    red 100%
+  ) !important;
   border: 1px solid rgb(121, 151, 248) !important;
   border-radius: 50% !important;
 }
 .amcontent {
   color: white !important;
+}
+.bluebg {
+  background-color: rgb(121, 151, 248) !important;
+  border: 1px solid rgb(121, 151, 248) !important;
+  border-radius: 50% !important;
 }
 .redBackground {
   background-color: rgb(250, 4, 4) !important;
