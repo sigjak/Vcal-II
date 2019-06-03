@@ -2,22 +2,17 @@
   <div id="app">
     <img src="./images/header_01.png" class="img-fluid" />
     <div class="d-flex justify-content-end">
-      <button class="btn btn-outline-light btn-sm mr-5 btnExit" @click="redir">
+      <button
+        class="btn btn-outline-light btn-sm mr-5 btnExit"
+        @click="$redir()"
+      >
         Exit
       </button>
     </div>
     <router-view />
   </div>
 </template>
-<script>
-export default {
-  methods: {
-    redir() {
-      window.location.href = "http://jardvis.hi.is/";
-    }
-  }
-};
-</script>
+
 <style>
 .btnExit {
   margin-top: -40px;

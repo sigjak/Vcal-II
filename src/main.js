@@ -17,7 +17,13 @@ const base = axios.create({
 Vue.prototype.$http = base;
 
 Vue.config.productionTip = false;
-
+Vue.mixin({
+  methods: {
+    $redir() {
+      window.location.href = "http://jardvis.hi.is/";
+    }
+  }
+});
 new Vue({
   router,
   render: h => h(App)
