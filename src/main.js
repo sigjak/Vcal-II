@@ -12,6 +12,7 @@ Vue.use(VueSweetalert2);
 Vue.use(VCalendar, { masks: { dayPopover: "" } });
 const base = axios.create({
   baseURL: "http://localhost/api/"
+  //"  https://microprobe.hi.is/api/,"
   //headers: { "Content-Type": "application/json", "Cache-Control": "no-cache" }
 });
 Vue.prototype.$http = base;
