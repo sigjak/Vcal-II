@@ -87,6 +87,7 @@ ul {
 .vc-pointer-events-none {
   pointer-events: auto !important;
   cursor: no-drop !important;
+  z-index: 100;
 }
 /* .ccc {
   color: red !important;
@@ -107,7 +108,7 @@ ul {
     blue 50%,
     blue 100%
   ) !important;
-  border: 1px solid rgb(121, 151, 248) !important;
+  border: 1px solid #fff !important;
   border-radius: 50% !important;
 }
 .pmbg {
@@ -119,7 +120,7 @@ ul {
     red 50%,
     red 100%
   ) !important;
-  border: 1px solid rgb(121, 151, 248) !important;
+  border: 1px solid #fff !important;
   border-radius: 50% !important;
 }
 .amcontent {
