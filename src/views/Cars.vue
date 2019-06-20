@@ -34,14 +34,10 @@
                   class="py-1"
                   v-if="typeof userData.dates.start !== 'undefined'"
                 >
+                  <li>From: {{ userData.dates.start.toDateString() }}</li>
                   <li>
-                    <span>From: {{ userData.dates.start.toDateString() }}</span>
-                  </li>
-                  <li>
-                    <span>
-                      To: &nbsp;&nbsp;&nbsp;
-                      {{ userData.dates.end.toDateString() }}</span
-                    >
+                    To: &nbsp;&nbsp;&nbsp;&nbsp;
+                    {{ userData.dates.end.toDateString() }}
                   </li>
                 </ul>
               </div>
@@ -135,7 +131,7 @@
           <textarea
             class="form-control "
             :class="{ 'is-invalid': $v.userData.comments.$invalid }"
-            placeholder="Provide info on what is to be analyzed, number of samples, sample preparations etc. "
+            placeholder="Provide info on travel, destination, how to contact, GSM etc.  "
             id="comments"
             cols="30"
             rows="5"
@@ -162,54 +158,24 @@
 </template>
 
 <script>
-import { sameAs, email, required, minLength } from "vuelidate/lib/validators";
+import { mixins } from "../assets/mixin";
 import Holidays from "../assets/dates";
-import f from "../func.js";
 
 export default {
   props: ["unit", "table"],
+  mixins: [mixins],
   methods: {
-    showAlert() {
-      this.$swal({
-        showCloseButton: true,
-        showCancelButton: true,
-        cancelButtonText: "No",
-        allowOutsideClick: false,
-        type: "success",
-        title: "Email sent!",
-        text: "More reservations?",
-        confirmButtonText: "Yes"
-      }).then(res => {
-        if (res.value) {
-          this.$router.push("/select/");
-        } else {
-          window.location.href = "http://jardvis.hi.is/";
-        }
-      });
-    },
     submitting() {
       // selectedDays contains PHP timestamp
-      this.userData.selectedDays = f.daysBetween(
+      this.userData.selectedDays = this.daysBetween(
         this.userData.dates.start.getTime(),
         this.userData.dates.end.getTime()
       );
 
-      this.userData.status = f.carStatus(this.userData.dates.start);
+      this.userData.status = this.carStatus(this.userData.dates.start);
 
       this.userData.account = `101-${this.userData.account}`;
-      this.$swal({
-        title: "Saving and sending email",
-        type: "info",
-        onBeforeOpen: () => {
-          this.$swal.showLoading();
-          this.$http.post("carPost.php", this.userData).then(() => {
-            this.userData.selectedDays = [];
-            this.userData.dates = [];
-            this.$swal.disableLoading();
-            this.showAlert();
-          });
-        }
-      });
+      this.submit("carPost.php");
     }
   },
   data() {
@@ -280,34 +246,9 @@ export default {
     this.userData.unit = this.unit;
     this.userData.table = this.table;
     this.$http.get(`getDate.php?name=${this.userData.table}`).then(resp => {
-      f.assign(resp.data[0], this.pendingDays);
-      f.assign(resp.data[1], this.disabledDates);
+      this.assign(resp.data[0], this.pendingDays);
+      this.assign(resp.data[1], this.disabledDates);
     });
-  },
-  validations: {
-    userData: {
-      fullname: {
-        required,
-        minLength: minLength(5)
-      },
-      email: {
-        required,
-        email
-      },
-      repeatEmail: {
-        required,
-        email,
-        sameAsEmail: sameAs("email")
-      },
-      account: {
-        required,
-        moLength: minLength(4)
-      },
-      comments: {
-        required,
-        minLength: minLength(6)
-      }
-    }
   }
 };
 </script>

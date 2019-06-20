@@ -233,7 +233,7 @@
           <textarea
             class="form-control "
             :class="{ 'is-invalid': $v.userData.comments.$invalid }"
-            placeholder="Provide info on what is to be analyzed, number of samples, sample preparations etc. "
+            :placeholder="comm"
             id="comments"
             cols="30"
             rows="5"
@@ -260,49 +260,19 @@
 </template>
 
 <script>
-import { sameAs, email, required, minLength } from "vuelidate/lib/validators";
+import { mixins } from "../assets/mixin";
 import Holidays from "../assets/dates";
-import f from "../func.js";
 
 export default {
   props: ["unit", "table"],
+  mixins: [mixins],
   methods: {
-    showAlert() {
-      this.$swal({
-        showCloseButton: true,
-        showCancelButton: true,
-        cancelButtonText: "No",
-        allowOutsideClick: false,
-        type: "success",
-        title: "Email sent!",
-        text: "More reservations?",
-        confirmButtonText: "Yes"
-      }).then(res => {
-        if (res.value) {
-          this.$router.push("/select");
-        } else {
-          window.location.href = "http://jardvis.hi.is/";
-        }
-      });
-    },
     submitting() {
       this.userData.dates.forEach(element => {
         this.userData.selectedDays.push(element.getTime() / 1000);
       });
       this.userData.account = `101-${this.userData.account}`;
-      this.$swal({
-        title: "Saving and sending email",
-        type: "info",
-        onBeforeOpen: () => {
-          this.$swal.showLoading();
-          this.$http.post("instrPost.php", this.userData).then(() => {
-            this.userData.selectedDays = [];
-            this.userData.dates = [];
-            this.$swal.disableLoading();
-            this.showAlert();
-          });
-        }
-      });
+      this.submit("instrPost.php");
     }
   },
   data() {
@@ -333,32 +303,15 @@ export default {
       reservedDays: []
     };
   },
-  validations: {
-    userData: {
-      fullname: {
-        required,
-        minLength: minLength(5)
-      },
-      email: {
-        required,
-        email
-      },
-      repeatEmail: {
-        required,
-        email,
-        sameAsEmail: sameAs("email")
-      },
-      account: {
-        required,
-        moLength: minLength(4)
-      },
-      comments: {
-        required,
-        minLength: minLength(6)
-      }
-    }
-  },
   computed: {
+    comm() {
+      let comm =
+        "Provide info on what is to be analyzed, number of samples, sample preparations etc.";
+      if (this.table == "thin_sections") {
+        comm = "Provide info on sample comp, when needed etc.";
+      }
+      return comm;
+    },
     attrs() {
       const attrs = [
         {
@@ -396,14 +349,24 @@ export default {
   created() {
     this.userData.unit = this.unit;
     this.userData.table = this.table;
-    this.$http.get(`getDate.php?name=${this.userData.table}`).then(resp => {
-      f.assign(resp.data[1], this.reservedDays);
+    this.$http
+      .get(`getDate.php?name=${this.userData.table}`)
+      .then(resp => {
+        console.log(resp);
+        this.assign(resp.data[1], this.reservedDays);
+        this.disabledDates = this.disabledDates.concat(
+          this.reservedDays,
+          Holidays[1]
+        );
+      })
+      .catch(error => {
+        if (!error.response) {
+          console.log("NETWORK ERROR");
+        }
+        console.log(error);
+        console.log("kk" + error.message);
+      });
 
-      this.disabledDates = this.disabledDates.concat(
-        this.reservedDays,
-        Holidays[1]
-      );
-    });
     if (this.userData.table === "thin_sections") {
       this.userData.dates.push(new Date());
     }

@@ -11,7 +11,7 @@
             <h2 class="text-muted">Select days</h2>
           </div>
 
-          <div class="col-auto mt-3">
+          <!-- <div class="col-auto mt-3">
             <v-date-picker
               mode="range"
               :columns="$screens({ default: 1, lg: 2 })"
@@ -22,9 +22,9 @@
               is-inline
               @input="setMax"
             />
-          </div>
+          </div> -->
 
-          <div class="col-auto">
+          <!-- <div class="col-auto">
             <div class=" card mt-3">
               <div class="card-header text-center ">Selected days</div>
               <div class="card-body pt-0 pl-2">
@@ -64,9 +64,9 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
-        <div class="form-group ">
+        <!-- <div class="form-group ">
           <label class="text-white col-form-label  ">Full Name</label>
           <input
             type="text"
@@ -173,7 +173,7 @@
               :disabled="$v.userData.$invalid || userData.dates.length <= 0"
             />
           </div>
-        </div>
+        </div> -->
       </form>
     </div>
   </div>
@@ -304,9 +304,13 @@ export default {
     this.userData.table = this.table;
     this.$http.get(`getHouse.php?name=${this.userData.table}`).then(resp => {
       this.assign(resp.data[0], this.availableDays);
+      console.log(resp.data[0]);
+      console.log(this.availableDays);
       this.compareDays = resp.data[0].map(element => {
         return element / 1000;
       });
+      console.log(this.compareDays);
+      console.log("hi");
       this.statusDays = resp.data[1];
       this.assign(resp.data[2], this.disabledDates);
       this.maxOccupancy = resp.data[3];

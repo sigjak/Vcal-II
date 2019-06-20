@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h5 class="display-3 text-center text-light mt-5">Select:</h5>
-    <div class="container ">
-      <div class="wrapper border border-light rounded py-3">
-        <div class="row justify-content-center ">
-          <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
+    <h5 class="display-3 text-center text-light mt-5">Select</h5>
+    <div class="container  ">
+      <div class="wrapper border border-light rounded   p-4 ">
+        <div class="row ">
+          <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
                 class="btn btn-primary"
@@ -27,9 +27,7 @@
                 Thin sections</router-link
               >
             </div>
-          </div>
 
-          <div class="col-md-4 d-flex justify-content-around mt-2 px-0">
             <div>
               <router-link
                 class="btn btn-primary"
@@ -41,6 +39,8 @@
                 SEM</router-link
               >
             </div>
+          </div>
+          <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
                 class="btn btn-primary"
@@ -50,20 +50,6 @@
                 }"
               >
                 FTIR</router-link
-              >
-            </div>
-          </div>
-
-          <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
-            <div>
-              <router-link
-                class="btn btn-primary"
-                :to="{
-                  name: 'instruments',
-                  params: { unit: 'ICP MS', table: 'icpms' }
-                }"
-              >
-                ICP MS</router-link
               >
             </div>
             <div>
@@ -77,10 +63,7 @@
                 ICP OES</router-link
               >
             </div>
-            <!--
-              
-
-               <div>
+            <div>
               <router-link
                 class="btn btn-primary"
                 :to="{
@@ -90,11 +73,11 @@
               >
                 ICP MS</router-link
               >
-            </div> -->
+            </div>
           </div>
         </div>
-        <div class="row justify-content-center ">
-          <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
+        <div class="row ">
+          <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
                 class="btn btn-primary"
@@ -117,8 +100,6 @@
                 IC 1000</router-link
               >
             </div>
-          </div>
-          <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
                 class="btn btn-primary"
@@ -130,6 +111,8 @@
                 IC 2000</router-link
               >
             </div>
+          </div>
+          <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
                 class="btn btn-primary"
@@ -141,8 +124,6 @@
                 Viking A</router-link
               >
             </div>
-          </div>
-          <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
                 class="btn btn-primary"
@@ -167,14 +148,14 @@
             </div>
           </div>
         </div>
-        <div class="row justify-content-center ">
-          <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
+        <div class="row ">
+          <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
                 class="btn btn-primary"
                 :to="{
                   name: 'cars',
-                  params: { unit: 'Open Trailer', table: 'opentrailer' }
+                  params: { unit: 'Open Trailer', table: 'opentariler' }
                 }"
               >
                 Open Trailer</router-link
@@ -191,8 +172,6 @@
                 Closed Trailer</router-link
               >
             </div>
-          </div>
-          <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
                 class="btn btn-primary"
@@ -204,6 +183,8 @@
                 Small Trailer</router-link
               >
             </div>
+          </div>
+          <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
                 class="btn btn-primary"
@@ -215,8 +196,6 @@
                 First Aid</router-link
               >
             </div>
-          </div>
-          <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
                 class="btn btn-primary"
@@ -241,8 +220,8 @@
             </div>
           </div>
         </div>
-        <div class="row justify-content-center ">
-          <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
+        <div class="row ">
+          <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
                 class="btn btn-primary"
@@ -265,8 +244,6 @@
                 Blue Hilux</router-link
               >
             </div>
-          </div>
-          <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
                 class="btn btn-primary"
@@ -278,6 +255,8 @@
                 Dyngja</router-link
               >
             </div>
+          </div>
+          <div class="col-md-6 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
                 class="btn btn-primary"
@@ -289,8 +268,6 @@
                 Helluhraun</router-link
               >
             </div>
-          </div>
-          <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
                 class="btn btn-primary"
@@ -308,7 +285,7 @@
           </div>
         </div>
         <div class="row  justify-content-center">
-          <div class="  col-md-4 d-flex justify-content-around  mt-2 p-0">
+          <div class="  ga col-md-4 d-flex justify-content-md-around  mt-2 p-0">
             <div>
               <router-link
                 class="btn btn-primary"
@@ -338,21 +315,26 @@
   </div>
 </template>
 
-<style scoped>
-.btn {
-  width: 100px;
-  font-size: 11px !important;
+<script>
+export default {};
+</script>
 
-  padding-left: 0px !important;
-  padding-right: 0px !important;
+<style>
+@media screen and (max-width: 767px) {
+  .ga {
+    justify-content: space-between;
+
+    margin-left: 3.7vw !important;
+    margin-right: 3.7vw !important;
+  }
+}
+.btn {
+  width: 110px;
+  font-size: 12px !important;
 }
 
 .wrapper {
-  max-width: 800px;
   margin-top: 5% !important;
-  padding-left: 30px;
-  padding-right: 30px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 1200px;
 }
 </style>

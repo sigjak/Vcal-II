@@ -10,6 +10,7 @@ import Houses from "./views/houses.vue";
 Vue.use(Router);
 
 export default new Router({
+  mode: "history",
   routes: [
     {
       path: "/",

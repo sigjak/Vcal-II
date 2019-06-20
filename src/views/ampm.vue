@@ -171,52 +171,22 @@
 </template>
 
 <script>
-import { sameAs, email, required, minLength } from "vuelidate/lib/validators";
+import { mixins } from "../assets/mixin";
 import Holidays from "../assets/dates";
-import f from "../func.js";
 
 export default {
   props: ["unit", "table"],
+  mixins: [mixins],
   methods: {
-    showAlert() {
-      this.$swal({
-        showCloseButton: true,
-        showCancelButton: true,
-        cancelButtonText: "No",
-        allowOutsideClick: false,
-        type: "success",
-        title: "Email sent!",
-        text: "More reservations?",
-        confirmButtonText: "Yes"
-      }).then(res => {
-        if (res.value) {
-          this.$router.push("/select/");
-        } else {
-          window.location.href = "http://jardvis.hi.is/";
-        }
-      });
-    },
     submitting() {
-      let stat = f.status(this.userData);
+      let stat = this.status(this.userData);
       // selectedDays contains PHP timestamp
       if (stat) {
         this.userData.dates.forEach(element => {
           this.userData.selectedDays.push(element.getTime() / 1000);
         });
         this.userData.account = `101-${this.userData.account}`;
-        this.$swal({
-          title: "Saving and sending email",
-          type: "info",
-          onBeforeOpen: () => {
-            this.$swal.showLoading();
-            this.$http.post("halfDayPost.php", this.userData).then(() => {
-              this.userData.selectedDays = [];
-              this.userData.dates = [];
-              this.$swal.disableLoading();
-              this.showAlert();
-            });
-          }
-        });
+        this.submit("halfDayPost.php");
       } else {
         this.$swal({
           type: "error",
@@ -252,31 +222,6 @@ export default {
       pmReservedDays: [],
       ampmReservedDays: []
     };
-  },
-  validations: {
-    userData: {
-      fullname: {
-        required,
-        minLength: minLength(5)
-      },
-      email: {
-        required,
-        email
-      },
-      repeatEmail: {
-        required,
-        email,
-        sameAsEmail: sameAs("email")
-      },
-      account: {
-        required,
-        moLength: minLength(4)
-      },
-      comments: {
-        required,
-        minLength: minLength(6)
-      }
-    }
   },
   computed: {
     attrs() {
@@ -333,8 +278,8 @@ export default {
     }
   },
   beforeUpdate() {
-    f.show(this.userData, this.amArray, this.amShow);
-    f.show(this.userData, this.pmArray, this.pmShow);
+    this.show(this.userData, this.amArray, this.amShow);
+    this.show(this.userData, this.pmArray, this.pmShow);
   },
   created() {
     this.userData.unit = this.unit;
@@ -342,9 +287,9 @@ export default {
     this.$http.get(`getHalfDate.php?name=${this.userData.table}`).then(resp => {
       this.amArray = resp.data[0];
       this.pmArray = resp.data[2];
-      f.assign(resp.data[0], this.amReservedDays);
-      f.assign(resp.data[1], this.ampmReservedDays);
-      f.assign(resp.data[2], this.pmReservedDays);
+      this.assign(resp.data[0], this.amReservedDays);
+      this.assign(resp.data[1], this.ampmReservedDays);
+      this.assign(resp.data[2], this.pmReservedDays);
 
       this.disabledDates = this.disabledDates.concat(
         this.ampmReservedDays,
