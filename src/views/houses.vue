@@ -182,6 +182,7 @@
 <script>
 import Holidays from "../assets/dates";
 import { mixins } from "../assets/mixin";
+import { email, sameAs, required, minLength } from "vuelidate/lib/validators";
 
 export default {
   props: ["unit", "table"],
@@ -217,6 +218,35 @@ export default {
 
       this.userData.account = `101-${this.userData.account}`;
       this.submit("housePost.php");
+    }
+  },
+  validations: {
+    userData: {
+      status: {
+        required,
+        minLength: minLength(1)
+      },
+      fullname: {
+        required,
+        minLength: minLength(5)
+      },
+      email: {
+        required,
+        email
+      },
+      repeatEmail: {
+        required,
+        email,
+        sameAsEmail: sameAs("email")
+      },
+      account: {
+        required,
+        moLength: minLength(4)
+      },
+      comments: {
+        required,
+        minLength: minLength(6)
+      }
     }
   },
   data() {
