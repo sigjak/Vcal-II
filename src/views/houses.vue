@@ -46,7 +46,7 @@
                     <span class="input-group-text bb">How many?</span>
                   </div>
                   <input
-                    v-model="userData.status"
+                    v-model.number="userData.status"
                     type="number"
                     class="form-control "
                     :class="{ bord: $v.userData.status.$invalid }"
@@ -189,6 +189,7 @@ export default {
   methods: {
     maxGuard() {
       const inp = document.getElementById("ip");
+      console.log(typeof this.userData.status);
       if (this.userData.status > inp.max) this.userData.status = "";
     },
     setMax() {
@@ -316,6 +317,10 @@ export default {
 };
 </script>
 <style scoped>
+li {
+  padding-left: 10px;
+  line-height: 1.35rem !important;
+}
 .hide {
   display: none;
 }
