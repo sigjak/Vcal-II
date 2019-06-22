@@ -260,5 +260,6 @@ export default {
 
 li {
   line-height: 1.35rem !important;
+  text-align: left;
 }
 </style>
