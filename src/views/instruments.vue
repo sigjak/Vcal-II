@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="text-center text-light display-4  my-5">{{ userData.unit }}</h1>
-
+    {{ $v.userData.email.$invalid }}
     <div class="container pb-5">
       <form @submit.prevent="submitting">
         <!--                                      THIN SECTIONS                   -->
@@ -278,9 +278,8 @@ export default {
   data() {
     return {
       disabledDates: [{ weekdays: [1, 7] }],
-
       userData: {
-        status: [],
+        status: [0],
         unit: "",
         table: "",
         dates: [],
@@ -349,6 +348,7 @@ export default {
   created() {
     this.userData.unit = this.unit;
     this.userData.table = this.table;
+    console.log("hello");
     this.$http
       .get(`getDate.php?name=${this.userData.table}`)
       .then(resp => {
@@ -370,6 +370,10 @@ export default {
     if (this.userData.table === "thin_sections") {
       this.userData.dates.push(new Date());
     }
+  },
+  mounted: function() {
+    console.log("hi");
+    this.$v.userData.email.$invalid = false;
   }
 };
 </script>

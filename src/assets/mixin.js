@@ -3,6 +3,10 @@ import { sameAs, email, required, minLength } from "vuelidate/lib/validators";
 export const mixins = {
   validations: {
     userData: {
+      status: {
+        required,
+        minLength: minLength(1)
+      },
       fullname: {
         required,
         minLength: minLength(5)

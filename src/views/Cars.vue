@@ -184,7 +184,7 @@ export default {
       pendingDays: [],
       reservedDays: [],
       userData: {
-        status: "",
+        status: "0",
         unit: "",
         table: "",
         dates: [],

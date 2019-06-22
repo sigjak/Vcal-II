@@ -206,7 +206,7 @@ export default {
       userData: {
         am: [],
         pm: [],
-        status: [],
+        status: [0],
         unit: "",
         table: "",
         dates: [],
