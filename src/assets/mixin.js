@@ -37,26 +37,17 @@ export const mixins = {
         type: "info",
         onBeforeOpen: () => {
           this.$swal.showLoading();
-          this.$http
-            .post(phpConnect, this.userData)
-            .then(resp => {
-              console.log(resp);
-              this.userData.selectedDays = [];
-              this.userData.dates = [];
-              this.$swal.disableLoading();
+          this.$http.post(phpConnect, this.userData).then(resp => {
+            //this.userData.selectedDays = [];
+            //this.userData.dates = [];
+            this.$swal.disableLoading();
 
-              if (resp.data == "error") {
-                this.showError();
-              } else {
-                this.showOk();
-              }
-            })
-            .catch(function(error) {
-              if (!error.response) {
-                // network error
-                console.log("hi");
-              }
-            });
+            if (resp.data == "error") {
+              this.showError();
+            } else {
+              this.showOk();
+            }
+          });
         }
       });
     },
@@ -146,7 +137,7 @@ export const mixins = {
         cancelButtonText: "No",
         allowOutsideClick: false,
         type: "error",
-        title: "Could not connect to database",
+        title: "Could not connect to database!!",
         text: "Try again?",
         confirmButtonText: "Yes"
       }).then(res => {

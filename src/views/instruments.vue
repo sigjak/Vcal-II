@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1 class="text-center text-light display-4  my-5">{{ userData.unit }}</h1>
-    {{ $v.userData.email.$invalid }}
     <div class="container pb-5">
       <form @submit.prevent="submitting">
         <!--                                      THIN SECTIONS                   -->
