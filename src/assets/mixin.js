@@ -122,7 +122,6 @@ export const mixins = {
       return status;
     },
     showError() {
-      console.log(this);
       this.$swal({
         showCloseButton: true,
         showCancelButton: true,
@@ -130,6 +129,24 @@ export const mixins = {
         allowOutsideClick: false,
         type: "error",
         title: "Something went wrong!!</br> Booked -- but no email sent!",
+        text: "Try again?",
+        confirmButtonText: "Yes"
+      }).then(res => {
+        if (res.value) {
+          this.$router.push("/selectItem");
+        } else {
+          window.location.href = "http://jardvis.hi.is/";
+        }
+      });
+    },
+    showConnError() {
+      this.$swal({
+        showCloseButton: true,
+        showCancelButton: true,
+        cancelButtonText: "No",
+        allowOutsideClick: false,
+        type: "error",
+        title: "Could not connect to database",
         text: "Try again?",
         confirmButtonText: "Yes"
       }).then(res => {

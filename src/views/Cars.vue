@@ -246,8 +246,12 @@ export default {
     this.userData.unit = this.unit;
     this.userData.table = this.table;
     this.$http.get(`getDate.php?name=${this.userData.table}`).then(resp => {
-      this.assign(resp.data[0], this.pendingDays);
-      this.assign(resp.data[1], this.disabledDates);
+      if (resp.data !== "ConnectionError") {
+        this.assign(resp.data[0], this.pendingDays);
+        this.assign(resp.data[1], this.disabledDates);
+      } else {
+        this.showConnError();
+      }
     });
   }
 };

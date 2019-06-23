@@ -189,7 +189,7 @@ export default {
   methods: {
     maxGuard() {
       const inp = document.getElementById("ip");
-      console.log(typeof this.userData.status);
+
       if (this.userData.status > inp.max) this.userData.status = "";
     },
     setMax() {
@@ -223,7 +223,6 @@ export default {
 
   data() {
     return {
-      // place: "Provide some basic infor, how to contact GSM mobile etc.",
       compareDays: [],
       disabledDates: [],
       availableDays: [],
@@ -305,13 +304,17 @@ export default {
     this.userData.unit = this.unit;
     this.userData.table = this.table;
     this.$http.get(`getHouse.php?name=${this.userData.table}`).then(resp => {
-      this.assign(resp.data[0], this.availableDays);
-      this.compareDays = resp.data[0].map(element => {
-        return element / 1000;
-      });
-      this.statusDays = resp.data[1];
-      this.assign(resp.data[2], this.disabledDates);
-      this.maxOccupancy = resp.data[3];
+      if (resp.data !== "ConnectionError") {
+        this.assign(resp.data[0], this.availableDays);
+        this.compareDays = resp.data[0].map(element => {
+          return element / 1000;
+        });
+        this.statusDays = resp.data[1];
+        this.assign(resp.data[2], this.disabledDates);
+        this.maxOccupancy = resp.data[3];
+      } else {
+        this.showConnError();
+      }
     });
   }
 };

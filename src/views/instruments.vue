@@ -348,32 +348,20 @@ export default {
   created() {
     this.userData.unit = this.unit;
     this.userData.table = this.table;
-    console.log("hello");
-    this.$http
-      .get(`getDate.php?name=${this.userData.table}`)
-      .then(resp => {
-        console.log(resp);
+    this.$http.get(`getDate.php?name=${this.userData.table}`).then(resp => {
+      if (resp.data !== "ConnectionError") {
         this.assign(resp.data[1], this.reservedDays);
         this.disabledDates = this.disabledDates.concat(
           this.reservedDays,
           Holidays[1]
         );
-      })
-      .catch(error => {
-        if (!error.response) {
-          console.log("NETWORK ERROR");
+        if (this.userData.table === "thin_sections") {
+          this.userData.dates.push(new Date());
         }
-        console.log(error);
-        console.log("kk" + error.message);
-      });
-
-    if (this.userData.table === "thin_sections") {
-      this.userData.dates.push(new Date());
-    }
-  },
-  mounted: function() {
-    console.log("hi");
-    this.$v.userData.email.$invalid = false;
+      } else {
+        this.showConnError();
+      }
+    });
   }
 };
 </script>
