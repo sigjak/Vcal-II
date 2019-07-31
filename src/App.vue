@@ -147,4 +147,7 @@ ul {
   color: red !important;
   font-style: italic;
 }
+.vc-day .vc-opacity-0 {
+  opacity: 0.2;
+}
 </style>

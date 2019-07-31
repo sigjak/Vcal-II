@@ -214,7 +214,7 @@ export default {
     },
 
     submitting() {
-      // selectedDays contains PHP timestamp
+      // selectedDays contain PHP timestamp
 
       this.userData.account = `101-${this.userData.account}`;
       this.submit("housePost.php");

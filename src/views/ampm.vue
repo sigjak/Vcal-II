@@ -71,6 +71,7 @@
             Full name required
           </div>
         </div>
+
         <div class="row form-group">
           <div class="col-md-6">
             <label for="email" class=" text-white col-form-label">Email</label>
