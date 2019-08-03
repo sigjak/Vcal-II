@@ -45,11 +45,12 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text bb">How many?</span>
                   </div>
+
                   <input
                     v-model.number="userData.status"
                     type="number"
                     class="form-control "
-                    :class="{ bord: $v.userData.status.$invalid }"
+                    :class="{ bord: userData.status.length < 1 }"
                     id="ip"
                     min="1"
                     max=""
@@ -57,7 +58,7 @@
                   />
                   <span
                     class="hide"
-                    :class="{ err: $v.userData.status.$invalid }"
+                    :class="{ err: userData.status.length < 1 }"
                   >
                     Enter a number
                   </span>
@@ -66,114 +67,7 @@
             </div>
           </div>
         </div>
-        <div class="form-group ">
-          <label class="text-white col-form-label  ">Full Name</label>
-          <input
-            type="text"
-            :class="{ 'is-invalid': $v.userData.fullname.$invalid }"
-            class="form-control  "
-            id="fullname"
-            placeholder="Enter Full Name"
-            v-model.trim="userData.fullname"
-          />
-          <div class="invalid-feedback">
-            Full name required
-          </div>
-        </div>
-        <div class="row form-group">
-          <div class="col-md-6">
-            <label for="email" class=" text-white col-form-label">Email</label>
-            <input
-              type="email"
-              :class="{ 'is-invalid': $v.userData.email.$invalid }"
-              class="form-control "
-              id="email"
-              placeholder="Email"
-              v-model.trim="userData.email"
-            />
-            <div class="invalid-feedback">
-              Email required.
-            </div>
-          </div>
-          <div class="col-md-6">
-            <label for="repeatEmail" class="text-white col-form-label"
-              >Verify Email</label
-            >
-            <input
-              type="email"
-              class="form-control "
-              id="repeatEmail"
-              placeholder="Verify email"
-              :class="{ 'is-invalid': $v.userData.repeatEmail.$invalid }"
-              v-model.trim="userData.repeatEmail"
-            />
-            <div
-              v-if="
-                $v.userData.repeatEmail.$invalid && !$v.userData.email.$invalid
-              "
-              class="invalid-feedback"
-            >
-              Verification required.
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class=" text-light ">Account</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">101</span>
-            </div>
-            <input
-              type="text"
-              :class="{ 'is-invalid': $v.userData.account.$invalid }"
-              class="form-control"
-              id="account"
-              placeholder="This account willl be charged!"
-              v-model.trim="userData.account"
-            />
-            <div class="invalid-feedback">
-              Account required.
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class=" text-light ">Supervisor</label>
-
-          <input
-            type="text"
-            class="form-control "
-            id="supervisor"
-            placeholder="...if applicable"
-            v-model.trim="userData.supervisor"
-          />
-        </div>
-
-        <div class="form-group">
-          <label class="text-light ">Comments</label>
-          <textarea
-            class="form-control  "
-            :class="{ 'is-invalid': $v.userData.comments.$invalid }"
-            :placeholder="place"
-            id="comments"
-            cols="30"
-            rows="5"
-            v-model.trim="userData.comments"
-          ></textarea>
-          <div class="invalid-feedback">
-            Some basic info...
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-2">
-            <input
-              type="submit"
-              value="Submit"
-              class="btn btn-primary"
-              :disabled="$v.userData.$invalid || userData.dates.length <= 0"
-            />
-          </div>
-        </div>
+        <FormFields :userData="userData" :kind="kind" />
       </form>
     </div>
   </div>
@@ -182,8 +76,11 @@
 <script>
 import Holidays from "../assets/dates";
 import { mixins } from "../assets/mixin";
-
+import FormFields from "../UI/FormFields";
 export default {
+  components: {
+    FormFields
+  },
   props: ["unit", "table"],
   mixins: [mixins],
   methods: {
@@ -223,6 +120,7 @@ export default {
 
   data() {
     return {
+      kind: "house",
       compareDays: [],
       disabledDates: [],
       availableDays: [],
@@ -288,21 +186,22 @@ export default {
       }
 
       return attrs;
-    },
-    place() {
-      let place =
-        "Provide some basic info on travel, destination, how to contact GSM mobile etc.";
-      if (this.table === "vidimelur") {
-        place =
-          "Further information as needed and where to send the invoice if applicable";
-      }
-      return place;
     }
+    //   place() {
+    //     let place =
+    //       "Provide some basic info on travel, destination, how to contact GSM mobile etc.";
+    //     if (this.table === "vidimelur") {
+    //       place =
+    //         "Further information as needed and where to send the invoice if applicable";
+    //     }
+    //     return place;
+    //   }
   },
 
   created() {
     this.userData.unit = this.unit;
     this.userData.table = this.table;
+    if (this.table == "vidimelur") this.kind = "vidimelur";
     this.$http.get(`getHouse.php?name=${this.userData.table}`).then(resp => {
       if (resp.data !== "ConnectionError") {
         this.assign(resp.data[0], this.availableDays);

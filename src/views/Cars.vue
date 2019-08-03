@@ -44,7 +44,7 @@
             </div>
           </div>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label class="text-white col-form-label  ">Full Name</label>
           <input
             type="text"
@@ -151,7 +151,8 @@
               :disabled="$v.userData.$invalid || userData.dates.length <= 0"
             />
           </div>
-        </div>
+        </div> -->
+        <FormFields :userData="userData" :kind="kind" />
       </form>
     </div>
   </div>
@@ -160,8 +161,11 @@
 <script>
 import { mixins } from "../assets/mixin";
 import Holidays from "../assets/dates";
-
+import FormFields from "../UI/FormFields";
 export default {
+  components: {
+    FormFields
+  },
   props: ["unit", "table"],
   mixins: [mixins],
   methods: {
@@ -180,6 +184,7 @@ export default {
   },
   data() {
     return {
+      kind: "cars",
       disabledDates: [],
       pendingDays: [],
       reservedDays: [],
