@@ -138,10 +138,17 @@ ul {
   opacity: 0.9;
 }
 .redCircle {
-  background-color: #fff !important;
-  border: 1.5px solid red !important;
+  background-color: rgb(255, 255, 255) !important;
+  border: 2px solid red !important;
   border-radius: 50% !important;
-  opacity: 0.5;
+}
+.blackCircle {
+  background-color: rgba(204, 204, 204, 0.356) !important;
+  border: 2px solid #ccc !important;
+}
+.blackContent {
+  color: black !important;
+  font-style: italic;
 }
 .redContent {
   color: red !important;

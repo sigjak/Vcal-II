@@ -123,6 +123,14 @@ export default {
     attrs() {
       const attrs = [
         {
+          bar: true,
+          dates: new Date(),
+          popover: {
+            label: "Today",
+            hideIndicator: true
+          }
+        },
+        {
           highlight: {
             class: "redCircle",
             contentClass: "redContent"

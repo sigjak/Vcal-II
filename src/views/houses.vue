@@ -145,6 +145,15 @@ export default {
     attrs() {
       const attrs = [
         {
+          bar: true,
+          order: 100,
+          dates: new Date(),
+          popover: {
+            label: "Today",
+            hideIndicator: true
+          }
+        },
+        {
           highlight: {
             class: "redCircle",
             contentClass: "redContent"
@@ -187,15 +196,6 @@ export default {
 
       return attrs;
     }
-    //   place() {
-    //     let place =
-    //       "Provide some basic info on travel, destination, how to contact GSM mobile etc.";
-    //     if (this.table === "vidimelur") {
-    //       place =
-    //         "Further information as needed and where to send the invoice if applicable";
-    //     }
-    //     return place;
-    //   }
   },
 
   created() {

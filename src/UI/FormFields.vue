@@ -146,21 +146,20 @@ export default {
   },
   computed: {
     plholder() {
-      let pl = "";
-      if (this.kind == "instrument") {
-        pl =
-          "Provide info on what is to be analyzed, number of samples, sample preparations etc.";
-      }
-      if (this.kind == "thin_sections") {
-        pl = "Provide info on sample comp, when needed etc.";
-      }
-      if (this.kind === "house") {
-        pl =
-          "Provide some basic info on travel, destination, how to contact GSM mobile etc.";
-      }
-      if (this.kind === "vidimelur") {
-        pl =
-          "Further information as needed and where to send the invoice if applicable";
+      let pl =
+        "Provide some basic info on travel, destination, how to contact GSM mobile etc.";
+      switch (this.kind) {
+        case "instrument":
+          pl =
+            "Provide info on what is to be analyzed, number of samples, sample preparations etc.";
+          break;
+        case "vidimelur":
+          pl =
+            "Further information as needed and where to send the invoice if applicable";
+          break;
+        case "thin_sections":
+          pl = "Provide info on sample comp, when needed etc.";
+          break;
       }
       return pl;
     }
