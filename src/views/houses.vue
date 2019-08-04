@@ -17,8 +17,8 @@
               :columns="$screens({ default: 1, lg: 2 })"
               :firstDayOfWeek="2"
               v-model="userData.dates"
-              :disabled-dates="disabledDates"
-              :attributes="attrs"
+              :disabled-dates="reservedDays"
+              :attributes="attrsHouse"
               is-inline
               @input="setMax"
             />
@@ -74,15 +74,16 @@
 </template>
 
 <script>
-import Holidays from "../assets/dates";
+// import Holidays from "../assets/dates";
 import { mixinMethods } from "../assets/mixinMethods";
+import { mixinComputed } from "../assets/mixinComputed";
 import FormFields from "../UI/FormFields";
 export default {
   components: {
     FormFields
   },
   props: ["unit", "table"],
-  mixins: [mixinMethods],
+  mixins: [mixinMethods, mixinComputed],
   methods: {
     maxGuard() {
       const inp = document.getElementById("ip");
@@ -121,8 +122,9 @@ export default {
   data() {
     return {
       kind: "house",
+      attrsHouse: [],
       compareDays: [],
-      disabledDates: [],
+      reservedDays: [],
       availableDays: [],
       statusDays: [],
       maxOccupancy: "",
@@ -142,41 +144,42 @@ export default {
     };
   },
   computed: {
-    attrs() {
-      const attrs = [
-        {
-          bar: true,
-          dates: new Date(),
-          popover: {
-            label: "Today",
-            hideIndicator: true
-          }
-        },
-        {
-          highlight: {
-            class: "redCircle",
-            contentClass: "redContent"
-          },
-          popover: {
-            label: "Holiday",
-            hideIndicator: true
-          },
-          dates: Holidays[1]
-        },
-        {
-          key: "booked",
-          highlight: {
-            class: "redBackground",
-            contentClass: "whiteContent"
-          },
-          popover: {
-            label: "Booked",
-            hideIndicator: true
-          },
-          dates: this.disabledDates
-        }
-      ];
-
+    // attrs() {
+    //   const attrs = [
+    //     {
+    //       bar: true,
+    //       dates: new Date(),
+    //       popover: {
+    //         label: "Today",
+    //         hideIndicator: true
+    //       }
+    //     },
+    //     {
+    //       highlight: {
+    //         class: "redCircle",
+    //         contentClass: "redContent"
+    //       },
+    //       popover: {
+    //         label: "Holiday",
+    //         hideIndicator: true
+    //       },
+    //       dates: Holidays[1]
+    //     },
+    //     {
+    //       key: "booked",
+    //       highlight: {
+    //         class: "redBackground",
+    //         contentClass: "whiteContent"
+    //       },
+    //       popover: {
+    //         label: "Booked",
+    //         hideIndicator: true
+    //       },
+    //       dates: this.reservedDays
+    //     }
+    //   ];
+    moreAttr() {
+      let arr2 = [];
       const arrLength = this.statusDays.length;
       for (let i = 0; i < arrLength; i++) {
         const temp = {
@@ -190,10 +193,10 @@ export default {
           },
           dates: this.availableDays[i]
         };
-        attrs.push(temp);
+        arr2.push(temp);
       }
 
-      return attrs;
+      return arr2;
     }
   },
 
@@ -208,8 +211,9 @@ export default {
           return element / 1000;
         });
         this.statusDays = resp.data[1];
-        this.assign(resp.data[2], this.disabledDates);
+        this.assign(resp.data[2], this.reservedDays);
         this.maxOccupancy = resp.data[3];
+        this.attrsHouse = this.attrs.concat(this.moreAttr);
       } else {
         this.showConnError();
       }
