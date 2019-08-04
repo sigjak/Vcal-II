@@ -187,8 +187,15 @@ export default {
     this.show(this.userData, this.pmArray, this.pmShow);
   },
   created() {
-    this.userData.unit = this.unit;
-    this.userData.table = this.table;
+    if (!this.unit) {
+      this.userData.unit = localStorage.getItem("unit");
+      this.userData.table = localStorage.getItem("table");
+    } else {
+      this.userData.unit = this.unit;
+      this.userData.table = this.table;
+      localStorage.setItem("unit", this.unit);
+      localStorage.setItem("table", this.table);
+    }
     this.$http.get(`getHalfDate.php?name=${this.userData.table}`).then(resp => {
       if (resp.data !== "ConnectionError") {
         this.amArray = resp.data[0];

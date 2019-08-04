@@ -26,7 +26,7 @@ export const mixinComputed = {
           key: "allday",
           highlight: {
             class: "redBackground",
-            contentClass: "whiteContent"
+            contentClass: "blackContent"
           },
           popover: {
             label: "Booked",
@@ -38,7 +38,7 @@ export const mixinComputed = {
           key: "pending",
           highlight: {
             class: "bluebg",
-            contentClass: "amcontent"
+            contentClass: "whiteContent"
           },
           popover: {
             label: "Requested",
