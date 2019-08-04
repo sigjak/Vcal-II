@@ -105,26 +105,26 @@ ul {
     to right,
     red 0%,
     red 50%,
-    blue 50%,
-    blue 100%
+    #efefef 50%,
+    #efefef 100%
   ) !important;
-  border: 1px solid #fff !important;
+  border: 1px solid #ccc !important;
   border-radius: 50% !important;
 }
 .pmbg {
   /* background-color: rgb(121, 151, 248) !important;*/
   background: linear-gradient(
     to right,
-    blue 0%,
-    blue 50%,
+    #efefef 0%,
+    #efefef 50%,
     red 50%,
     red 100%
   ) !important;
-  border: 1px solid #fff !important;
+  border: 1px solid #ccc !important;
   border-radius: 50% !important;
 }
 .amcontent {
-  color: white !important;
+  color: black !important;
 }
 .bluebg {
   background-color: rgb(121, 151, 248) !important;

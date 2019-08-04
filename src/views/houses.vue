@@ -75,14 +75,14 @@
 
 <script>
 import Holidays from "../assets/dates";
-import { mixins } from "../assets/mixin";
+import { mixinMethods } from "../assets/mixinMethods";
 import FormFields from "../UI/FormFields";
 export default {
   components: {
     FormFields
   },
   props: ["unit", "table"],
-  mixins: [mixins],
+  mixins: [mixinMethods],
   methods: {
     maxGuard() {
       const inp = document.getElementById("ip");
@@ -146,7 +146,6 @@ export default {
       const attrs = [
         {
           bar: true,
-          order: 100,
           dates: new Date(),
           popover: {
             label: "Today",

@@ -152,7 +152,8 @@
 </template>
 
 <script>
-import { mixins } from "../assets/mixin";
+import { mixinMethods } from "../assets/mixinMethods";
+import { mixinComputed } from "../assets/mixinComputed";
 import Holidays from "../assets/dates";
 import FormFields from "../UI/FormFields";
 export default {
@@ -160,7 +161,7 @@ export default {
   components: {
     FormFields
   },
-  mixins: [mixins],
+  mixins: [mixinMethods, mixinComputed],
   methods: {
     submitting() {
       this.userData.dates.forEach(element => {
@@ -198,48 +199,45 @@ export default {
       reservedDays: []
     };
   },
-  computed: {
-    attrs() {
-      const attrs = [
-        {
-          bar: true,
-          dates: new Date(),
-          popover: {
-            label: "Today",
-            hideIndicator: true
-          }
-        },
-        {
-          highlight: {
-            class: "redCircle",
-            contentClass: "redContent"
-          },
-          popover: {
-            label: "Holiday",
-            hideIndicator: true
-          },
-          dates: Holidays[1]
-        },
-        {
-          key: "allday",
-          highlight: {
-            class: "redBackground",
-            contentClass: "whiteContent"
-          },
-          // highlight: {
-          //   class: "allbg",
-          //   contentClass: "bo"
-          // },
-          popover: {
-            label: "Booked",
-            hideIndicator: true
-          },
-          dates: this.reservedDays
-        }
-      ];
-      return attrs;
-    }
-  },
+  // computed: {
+  //   attrs() {
+  //     const attrs = [
+  //       {
+  //         bar: true,
+  //         dates: new Date(),
+  //         popover: {
+  //           label: "Today",
+  //           hideIndicator: true
+  //         }
+  //       },
+  //       {
+  //         highlight: {
+  //           class: "redCircle",
+  //           contentClass: "redContent"
+  //         },
+  //         popover: {
+  //           label: "Holiday",
+  //           hideIndicator: true
+  //         },
+  //         dates: Holidays[1]
+  //       },
+  //       {
+  //         key: "allday",
+  //         highlight: {
+  //           class: "redBackground",
+  //           contentClass: "whiteContent"
+  //         },
+
+  //         popover: {
+  //           label: "Booked",
+  //           hideIndicator: true
+  //         },
+  //         dates: this.reservedDays
+  //       }
+  //     ];
+  //     return attrs;
+  //   }
+  // },
 
   created() {
     this.userData.unit = this.unit;

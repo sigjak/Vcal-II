@@ -1,4 +1,4 @@
-export const mixins = {
+export const mixinMethods = {
   methods: {
     submit(phpConnect) {
       this.$swal({

@@ -20,7 +20,7 @@
               :columns="$screens({ default: 1, lg: 2 })"
               :firstDayOfWeek="2"
               v-model="userData.dates"
-              :disabled-dates="disabledDates"
+              :disabled-dates="reservedDays"
               :attributes="attrs"
               is-inline
             />
@@ -52,15 +52,16 @@
 </template>
 
 <script>
-import { mixins } from "../assets/mixin";
-import Holidays from "../assets/dates";
+import { mixinMethods } from "../assets/mixinMethods";
+import { mixinComputed } from "../assets/mixinComputed";
+//import Holidays from "../assets/dates";
 import FormFields from "../UI/FormFields";
 export default {
   components: {
     FormFields
   },
   props: ["unit", "table"],
-  mixins: [mixins],
+  mixins: [mixinMethods, mixinComputed],
   methods: {
     submitting() {
       // selectedDays contains PHP timestamp
@@ -78,9 +79,9 @@ export default {
   data() {
     return {
       kind: "cars",
-      disabledDates: [],
-      pendingDays: [],
       reservedDays: [],
+      pendingDays: [],
+
       userData: {
         status: "0",
         unit: "",
@@ -96,57 +97,57 @@ export default {
       }
     };
   },
-  computed: {
-    attrs() {
-      const attrs = [
-        {
-          bar: true,
-          order: 100,
-          dates: new Date(),
-          popover: {
-            label: "Today",
-            hideIndicator: true
-          }
-        },
-        {
-          highlight: {
-            class: "redCircle",
-            contentClass: "redContent"
-          },
-          popover: {
-            label: "Holiday",
-            hideIndicator: true
-          },
-          dates: Holidays[1]
-        },
-        {
-          key: "booked",
-          highlight: {
-            class: "redBackground",
-            contentClass: "whiteContent"
-          },
-          popover: {
-            label: "Booked",
-            hideIndicator: true
-          },
-          dates: this.disabledDates
-        },
-        {
-          key: "pending",
-          highlight: {
-            class: "bluebg",
-            contentClass: "amcontent"
-          },
-          popover: {
-            label: "Requested",
-            hideIndicator: true
-          },
-          dates: this.pendingDays
-        }
-      ];
-      return attrs;
-    }
-  },
+  // computed: {
+  //   attrs() {
+  //     const attrs = [
+  //       {
+  //         bar: true,
+  //         order: 100,
+  //         dates: new Date(),
+  //         popover: {
+  //           label: "Today",
+  //           hideIndicator: true
+  //         }
+  //       },
+  //       {
+  //         highlight: {
+  //           class: "redCircle",
+  //           contentClass: "redContent"
+  //         },
+  //         popover: {
+  //           label: "Holiday",
+  //           hideIndicator: true
+  //         },
+  //         dates: Holidays[1]
+  //       },
+  //       {
+  //         key: "booked",
+  //         highlight: {
+  //           class: "redBackground",
+  //           contentClass: "whiteContent"
+  //         },
+  //         popover: {
+  //           label: "Booked",
+  //           hideIndicator: true
+  //         },
+  //         dates: this.reservedDays
+  //       },
+  //       {
+  //         key: "pending",
+  //         highlight: {
+  //           class: "bluebg",
+  //           contentClass: "amcontent"
+  //         },
+  //         popover: {
+  //           label: "Requested",
+  //           hideIndicator: true
+  //         },
+  //         dates: this.pendingDays
+  //       }
+  //     ];
+  //     return attrs;
+  //   }
+  // },
 
   created() {
     //1 is confirmed, 0 is pending -
@@ -155,7 +156,7 @@ export default {
     this.$http.get(`getDate.php?name=${this.userData.table}`).then(resp => {
       if (resp.data !== "ConnectionError") {
         this.assign(resp.data[0], this.pendingDays);
-        this.assign(resp.data[1], this.disabledDates);
+        this.assign(resp.data[1], this.reservedDays);
       } else {
         this.showConnError();
       }

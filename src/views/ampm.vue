@@ -63,7 +63,8 @@
 </template>
 
 <script>
-import { mixins } from "../assets/mixin";
+import { mixinMethods } from "../assets/mixinMethods";
+import { mixinComputed } from "../assets/mixinComputed";
 import Holidays from "../assets/dates";
 import FormFields from "../UI/FormFields";
 export default {
@@ -71,7 +72,7 @@ export default {
     FormFields
   },
   props: ["unit", "table"],
-  mixins: [mixins],
+  mixins: [mixinMethods, mixinComputed],
   methods: {
     submitting() {
       let stat = this.status(this.userData);
@@ -116,71 +117,71 @@ export default {
       },
       amReservedDays: [],
       pmReservedDays: [],
-      ampmReservedDays: []
+      reservedDays: []
     };
   },
-  computed: {
-    attrs() {
-      const attrs = [
-        {
-          bar: true,
-          dates: new Date(),
-          popover: {
-            label: "Today",
-            hideIndicator: true
-          }
-        },
-        {
-          highlight: {
-            class: "redCircle",
-            contentClass: "redContent"
-          },
-          popover: {
-            label: "Holiday",
-            hideIndicator: true
-          },
-          dates: Holidays[1]
-        },
-        {
-          key: "allday",
-          highlight: {
-            class: "redBackground",
-            contentClass: "whiteContent"
-          },
-          popover: {
-            label: "Booked",
-            hideIndicator: true
-          },
-          dates: this.ampmReservedDays
-        },
-        {
-          key: "am",
-          highlight: {
-            class: "ambg",
-            contentClass: "amcontent"
-          },
-          popover: {
-            label: "PM available",
-            hideIndicator: true
-          },
-          dates: this.amReservedDays
-        },
-        {
-          key: "pm",
-          highlight: {
-            class: "pmbg",
-            contentClass: "amcontent"
-          },
-          popover: {
-            label: "AM available",
-            hideIndicator: true
-          },
-          dates: this.pmReservedDays
-        }
-      ];
-      return attrs;
-    }
-  },
+  // computed: {
+  //   attrs() {
+  //     const attrs = [
+  //       {
+  //         bar: true,
+  //         dates: new Date(),
+  //         popover: {
+  //           label: "Today",
+  //           hideIndicator: true
+  //         }
+  //       },
+  //       {
+  //         highlight: {
+  //           class: "redCircle",
+  //           contentClass: "redContent"
+  //         },
+  //         popover: {
+  //           label: "Holiday",
+  //           hideIndicator: true
+  //         },
+  //         dates: Holidays[1]
+  //       },
+  //       {
+  //         key: "allday",
+  //         highlight: {
+  //           class: "redBackground",
+  //           contentClass: "whiteContent"
+  //         },
+  //         popover: {
+  //           label: "Booked",
+  //           hideIndicator: true
+  //         },
+  //         dates: this.reservedDays
+  //       },
+  //       {
+  //         key: "am",
+  //         highlight: {
+  //           class: "ambg",
+  //           contentClass: "amcontent"
+  //         },
+  //         popover: {
+  //           label: "PM available",
+  //           hideIndicator: true
+  //         },
+  //         dates: this.amReservedDays
+  //       },
+  //       {
+  //         key: "pm",
+  //         highlight: {
+  //           class: "pmbg",
+  //           contentClass: "amcontent"
+  //         },
+  //         popover: {
+  //           label: "AM available",
+  //           hideIndicator: true
+  //         },
+  //         dates: this.pmReservedDays
+  //       }
+  //     ];
+  //     return attrs;
+  //   }
+  // },
   beforeUpdate() {
     this.show(this.userData, this.amArray, this.amShow);
     this.show(this.userData, this.pmArray, this.pmShow);
@@ -193,11 +194,11 @@ export default {
         this.amArray = resp.data[0];
         this.pmArray = resp.data[2];
         this.assign(resp.data[0], this.amReservedDays);
-        this.assign(resp.data[1], this.ampmReservedDays);
+        this.assign(resp.data[1], this.reservedDays);
         this.assign(resp.data[2], this.pmReservedDays);
 
         this.disabledDates = this.disabledDates.concat(
-          this.ampmReservedDays,
+          this.reservedDays,
           Holidays[1]
         );
       } else {
