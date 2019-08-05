@@ -1,11 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Login from "./views/login";
-import Select from "./views/selectItems.vue";
-import AMPM from "./views/ampm.vue";
-import Cars from "./views/Cars.vue";
-import Instruments from "./views/instruments.vue";
-import Houses from "./views/houses.vue";
 
 Vue.use(Router);
 
@@ -20,31 +15,34 @@ export default new Router({
     {
       path: "/selectItem",
       name: "selectItem",
-      component: Select
+      component: () =>
+        import(/*webpackChunkName: "select" */ "./views/selectItems.vue")
     },
     {
       path: "/instruments",
       name: "instruments",
-      component: Instruments,
+      component: () =>
+        import(/*webpackChunkName: "instruments" */ "./views/instruments.vue"),
       props: true
     },
     {
       path: "/ampm",
       name: "ampm",
-      component: AMPM,
+      component: () => import(/*webpackChunkName: "ampm" */ "./views/ampm.vue"),
       props: true
     },
 
     {
       path: "/cars",
       name: "cars",
-      component: Cars,
+      component: () => import(/*webpackChunkName: "cars" */ "./views/Cars.vue"),
       props: true
     },
     {
       path: "/houses",
       name: "houses",
-      component: Houses,
+      component: () =>
+        import(/*webpackChunkName: "houses" */ "./views/houses.vue"),
       props: true
     }
   ]

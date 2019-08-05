@@ -13,7 +13,22 @@
   </div>
 </template>
 
-<style>
+<style lang="scss">
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/grid";
+@import "node_modules/bootstrap/scss/utilities/borders";
+@import "node_modules/bootstrap/scss/utilities/text";
+
+@import "node_modules/bootstrap/scss/buttons";
+@import "node_modules/bootstrap/scss/type";
+@import "node_modules/bootstrap/scss/forms";
+@import "node_modules/bootstrap/scss/card";
+@import "node_modules/bootstrap/scss/bootstrap-grid";
+@import "node_modules/bootstrap/scss/bootstrap-reboot";
+@import "node_modules/bootstrap/scss/input-group";
+
 .btnExit {
   margin-top: -40px;
   width: 60px !important;
@@ -55,9 +70,7 @@ input[type="checkbox"] {
 label {
   font-size: 0.9rem !important;
 }
-/* .cont {
-  color: red !important;
-} */
+
 .vc-header {
   background-color: #edb862;
   border: 2px solid #edb862;
@@ -89,10 +102,7 @@ ul {
   cursor: no-drop !important;
   z-index: 100;
 }
-/* .ccc {
-  color: red !important;
-  cursor: no-drop !important;
-} */
+
 .whiteBackground {
   background-color: #fff !important;
 }
