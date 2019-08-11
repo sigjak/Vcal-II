@@ -147,6 +147,12 @@ ul {
   border-radius: 50% !important;
   opacity: 0.9;
 }
+.greyBackground {
+  background-color: rgb(240, 240, 240) !important;
+  border: 1px solid #ccc !important;
+  border-radius: 50% !important;
+}
+
 .redCircle {
   background-color: rgb(255, 255, 255) !important;
   border: 2px solid red !important;
