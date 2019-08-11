@@ -106,6 +106,11 @@ ul {
 .whiteBackground {
   background-color: #fff !important;
 }
+.greyBackground {
+  background-color: rgb(240, 240, 240) !important;
+  border: 1px solid #ccc !important;
+  border-radius: 50% !important;
+}
 .whiteContent {
   color: #fff !important;
 }
@@ -147,12 +152,6 @@ ul {
   border-radius: 50% !important;
   opacity: 0.9;
 }
-.greyBackground {
-  background-color: rgb(240, 240, 240) !important;
-  border: 1px solid #ccc !important;
-  border-radius: 50% !important;
-}
-
 .redCircle {
   background-color: rgb(255, 255, 255) !important;
   border: 2px solid red !important;
@@ -165,6 +164,9 @@ ul {
 .blackContent {
   color: black !important;
   font-style: italic;
+}
+.greyContent {
+  color: rgb(117, 115, 115) !important; 
 }
 .redContent {
   color: red !important;

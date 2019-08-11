@@ -32,7 +32,8 @@ export const mixinComputed = {
             label: "Booked",
             hideIndicator: true
           },
-          dates: this.reservedDays
+          dates: this.reservedDays,
+          order: 100
         },
         {
           key: "pending",
@@ -69,6 +70,15 @@ export const mixinComputed = {
             hideIndicator: true
           },
           dates: this.pmReservedDays
+        },
+        {
+          key: "weekend",
+          highlight: {
+            class: "whiteBackground",
+            contentClass: "greyContent"
+          },
+
+          dates: { weekdays: [1, 7] }
         }
       ];
       return attrs;
