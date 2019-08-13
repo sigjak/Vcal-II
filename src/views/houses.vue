@@ -16,6 +16,7 @@
               mode="range"
               :columns="$screens({ default: 1, lg: 2 })"
               :firstDayOfWeek="2"
+              :step="1"
               v-model="userData.dates"
               :disabled-dates="reservedDays"
               :attributes="attrsHouse"

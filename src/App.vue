@@ -138,9 +138,7 @@ ul {
   border: 1px solid #ccc !important;
   border-radius: 50% !important;
 }
-.amcontent {
-  color: black !important;
-}
+
 .bluebg {
   background-color: rgb(121, 151, 248) !important;
   border: 1px solid rgb(121, 151, 248) !important;
@@ -163,10 +161,10 @@ ul {
 }
 .blackContent {
   color: black !important;
-  font-style: italic;
+  //font-style: italic;
 }
 .greyContent {
-  color: rgb(117, 115, 115) !important; 
+  color: rgb(117, 115, 115) !important;
 }
 .redContent {
   color: red !important;

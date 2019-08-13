@@ -26,7 +26,7 @@ export const mixinComputed = {
           key: "allday",
           highlight: {
             class: "redBackground",
-            contentClass: "blackContent"
+            contentClass: "whiteContent"
           },
           popover: {
             label: "Booked",
@@ -51,7 +51,7 @@ export const mixinComputed = {
           key: "am",
           highlight: {
             class: "ambg",
-            contentClass: "amcontent"
+            contentClass: "blackContent"
           },
           popover: {
             label: "PM available",
@@ -63,7 +63,7 @@ export const mixinComputed = {
           key: "pm",
           highlight: {
             class: "pmbg",
-            contentClass: "amcontent"
+            contentClass: "blackContent"
           },
           popover: {
             label: "AM available",
@@ -77,7 +77,6 @@ export const mixinComputed = {
             class: "whiteBackground",
             contentClass: "greyContent"
           },
-
           dates: { weekdays: [1, 7] }
         }
       ];
