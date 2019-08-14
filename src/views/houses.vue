@@ -152,7 +152,7 @@ export default {
         const temp = {
           highlight: {
             class: "ambg",
-            contentClass: "amcontent"
+            contentClass: "greyContent"
           },
           popover: {
             label: `Available: ${this.statusDays[i]}`,
