@@ -1,12 +1,10 @@
 <template>
   <div>
-    <h1 class="text-center text-light display-4  mt-4">{{ userData.unit }}</h1>
+    <h1 class="text-center text-light display-4 mt-4">{{ userData.unit }}</h1>
 
     <div class="container pb-5">
       <form @submit.prevent="submitting">
-        <div
-          class=" linBg mt-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg "
-        >
+        <div class="linBg mt-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg">
           <div class="col-12 text-center">
             <h2 class="text-muted">Select days</h2>
           </div>
@@ -26,13 +24,10 @@
           </div>
 
           <div class="col-auto">
-            <div class=" card mt-3">
-              <div class="card-header text-center ">Selected days</div>
+            <div class="card mt-3">
+              <div class="card-header text-center">Selected days</div>
               <div class="card-body pt-0 pl-2">
-                <ul
-                  class="py-1"
-                  v-if="typeof userData.dates.start !== 'undefined'"
-                >
+                <ul class="py-1" v-if="typeof userData.dates.start !== 'undefined'">
                   <li>From: {{ userData.dates.start.toDateString() }}</li>
                   <li>
                     To: &nbsp;&nbsp;&nbsp;&nbsp;
@@ -50,19 +45,14 @@
                   <input
                     v-model.number="userData.status"
                     type="number"
-                    class="form-control "
+                    class="form-control"
                     :class="{ bord: userData.status.length < 1 }"
                     id="ip"
                     min="1"
-                    max=""
+                    max
                     v-on:keyup="maxGuard"
                   />
-                  <span
-                    class="hide"
-                    :class="{ err: userData.status.length < 1 }"
-                  >
-                    Enter a number
-                  </span>
+                  <span class="hide" :class="{ err: userData.status.length < 1 }">Enter a number</span>
                 </div>
               </div>
             </div>
@@ -152,7 +142,7 @@ export default {
         const temp = {
           highlight: {
             class: "ambg",
-            contentClass: "greyContent"
+            contentClass: "blackContent"
           },
           popover: {
             label: `Available: ${this.statusDays[i]}`,
