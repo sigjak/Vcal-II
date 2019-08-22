@@ -28,6 +28,7 @@
 @import "node_modules/bootstrap/scss/bootstrap-grid";
 @import "node_modules/bootstrap/scss/bootstrap-reboot";
 @import "node_modules/bootstrap/scss/input-group";
+@import "node_modules/bootstrap/scss/images";
 
 .btnExit {
   margin-top: -40px;
