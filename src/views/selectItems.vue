@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h5 class="display-3 text-center text-light mt-5">Select:</h5>
-    <div class="container ">
+    <h5 class="display-3 test text-center text-light mt-5">Select:</h5>
+    <div class="container">
       <div class="wrapper border border-light rounded py-3">
-        <div class="row justify-content-center ">
+        <div class="row justify-content-center">
           <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
@@ -12,9 +12,7 @@
                   name: 'instruments',
                   params: { unit: 'Microprobe', table: 'probeuse' }
                 }"
-              >
-                Microprobe</router-link
-              >
+              >Microprobe</router-link>
             </div>
             <div>
               <router-link
@@ -23,9 +21,7 @@
                   name: 'instruments',
                   params: { unit: 'Thin sections', table: 'thin_sections' }
                 }"
-              >
-                Thin sections</router-link
-              >
+              >Thin sections</router-link>
             </div>
           </div>
 
@@ -37,9 +33,7 @@
                   name: 'ampm',
                   params: { unit: 'SEM', table: 'sem' }
                 }"
-              >
-                SEM</router-link
-              >
+              >SEM</router-link>
             </div>
             <div>
               <router-link
@@ -48,9 +42,7 @@
                   name: 'ampm',
                   params: { unit: 'FTIR', table: 'ftir' }
                 }"
-              >
-                FTIR</router-link
-              >
+              >FTIR</router-link>
             </div>
           </div>
 
@@ -62,9 +54,7 @@
                   name: 'instruments',
                   params: { unit: 'ICP MS', table: 'icpms' }
                 }"
-              >
-                ICP MS</router-link
-              >
+              >ICP MS</router-link>
             </div>
             <div>
               <router-link
@@ -73,9 +63,7 @@
                   name: 'instruments',
                   params: { unit: 'ICP OES', table: 'icpoes' }
                 }"
-              >
-                ICP OES</router-link
-              >
+              >ICP OES</router-link>
             </div>
             <!--
               
@@ -90,10 +78,10 @@
               >
                 ICP MS</router-link
               >
-            </div> -->
+            </div>-->
           </div>
         </div>
-        <div class="row justify-content-center ">
+        <div class="row justify-content-center">
           <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
@@ -102,9 +90,7 @@
                   name: 'instruments',
                   params: { unit: 'MassSpec AES', table: 'massaes' }
                 }"
-              >
-                MassSpec AES</router-link
-              >
+              >MassSpec AES</router-link>
             </div>
             <div>
               <router-link
@@ -113,9 +99,7 @@
                   name: 'instruments',
                   params: { unit: 'IC 1000', table: 'ic1000' }
                 }"
-              >
-                IC 1000</router-link
-              >
+              >IC 1000</router-link>
             </div>
           </div>
           <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
@@ -126,9 +110,7 @@
                   name: 'instruments',
                   params: { unit: 'IC 2000', table: 'ic2000' }
                 }"
-              >
-                IC 2000</router-link
-              >
+              >IC 2000</router-link>
             </div>
             <div>
               <router-link
@@ -137,9 +119,7 @@
                   name: 'cars',
                   params: { unit: 'Viking A', table: 'viking_a' }
                 }"
-              >
-                Viking A</router-link
-              >
+              >Viking A</router-link>
             </div>
           </div>
           <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
@@ -150,9 +130,7 @@
                   name: 'cars',
                   params: { unit: 'Viking B', table: 'viking_b' }
                 }"
-              >
-                Viking B</router-link
-              >
+              >Viking B</router-link>
             </div>
             <div>
               <router-link
@@ -161,13 +139,11 @@
                   name: 'cars',
                   params: { unit: 'Warrior', table: 'warrior' }
                 }"
-              >
-                Warrior</router-link
-              >
+              >Warrior</router-link>
             </div>
           </div>
         </div>
-        <div class="row justify-content-center ">
+        <div class="row justify-content-center">
           <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
@@ -176,9 +152,7 @@
                   name: 'cars',
                   params: { unit: 'Open Trailer', table: 'opentrailer' }
                 }"
-              >
-                Open Trailer</router-link
-              >
+              >Open Trailer</router-link>
             </div>
             <div>
               <router-link
@@ -187,9 +161,7 @@
                   name: 'cars',
                   params: { unit: 'Closed Trailer', table: 'closedtrailer' }
                 }"
-              >
-                Closed Trailer</router-link
-              >
+              >Closed Trailer</router-link>
             </div>
           </div>
           <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
@@ -200,9 +172,7 @@
                   name: 'cars',
                   params: { unit: 'Small Trailer', table: 'smalltrailer' }
                 }"
-              >
-                Small Trailer</router-link
-              >
+              >Small Trailer</router-link>
             </div>
             <div>
               <router-link
@@ -211,9 +181,7 @@
                   name: 'houses',
                   params: { unit: 'First Aid', table: 'firstaid' }
                 }"
-              >
-                First Aid</router-link
-              >
+              >First Aid</router-link>
             </div>
           </div>
           <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
@@ -224,9 +192,7 @@
                   name: 'houses',
                   params: { unit: 'Gas Detectors', table: 'gasdetect' }
                 }"
-              >
-                Gas Detectors</router-link
-              >
+              >Gas Detectors</router-link>
             </div>
             <div>
               <router-link
@@ -235,13 +201,11 @@
                   name: 'houses',
                   params: { unit: 'Iridium Sat Phones', table: 'iridium' }
                 }"
-              >
-                IR Sat Phones</router-link
-              >
+              >IR Sat Phones</router-link>
             </div>
           </div>
         </div>
-        <div class="row justify-content-center ">
+        <div class="row justify-content-center">
           <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
@@ -250,9 +214,7 @@
                   name: 'cars',
                   params: { unit: 'Red Hilux', table: 'red_hilux' }
                 }"
-              >
-                Red Hilux</router-link
-              >
+              >Red Hilux</router-link>
             </div>
             <div>
               <router-link
@@ -261,9 +223,7 @@
                   name: 'cars',
                   params: { unit: 'Blue Hilux', table: 'blue_hilux' }
                 }"
-              >
-                Blue Hilux</router-link
-              >
+              >Blue Hilux</router-link>
             </div>
           </div>
           <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
@@ -274,9 +234,7 @@
                   name: 'houses',
                   params: { unit: 'Dyngja', table: 'dyngja' }
                 }"
-              >
-                Dyngja</router-link
-              >
+              >Dyngja</router-link>
             </div>
             <div>
               <router-link
@@ -285,9 +243,7 @@
                   name: 'houses',
                   params: { unit: 'Helluhraun', table: 'helluhraun' }
                 }"
-              >
-                Helluhraun</router-link
-              >
+              >Helluhraun</router-link>
             </div>
           </div>
           <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
@@ -298,17 +254,15 @@
                   name: 'houses',
                   params: { unit: 'Víðimelur', table: 'vidimelur' }
                 }"
-              >
-                Víðimelur</router-link
-              >
+              >Víðimelur</router-link>
             </div>
             <div>
               <button class="btn btn-primary">Storage</button>
             </div>
           </div>
         </div>
-        <div class="row  justify-content-center">
-          <div class="  col-md-4 d-flex justify-content-around  mt-2 p-0">
+        <div class="row justify-content-center">
+          <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
                 class="btn btn-primary"
@@ -316,20 +270,16 @@
                   name: 'instruments',
                   params: { unit: 'ICP-OES-II', table: 'icpoes2' }
                 }"
-              >
-                ICP-OES II</router-link
-              >
+              >ICP-OES II</router-link>
             </div>
             <div>
               <router-link
-                class="btn btn-primary "
+                class="btn btn-primary"
                 :to="{
                   name: 'instruments',
                   params: { unit: 'MC-ICP-MS', table: 'mcicpms' }
                 }"
-              >
-                MC-ICP-MS</router-link
-              >
+              >MC-ICP-MS</router-link>
             </div>
           </div>
         </div>
@@ -354,5 +304,11 @@
   padding-right: 30px;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .test {
+    font-size: 2.5rem;
+  }
 }
 </style>

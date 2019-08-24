@@ -10,10 +10,14 @@ import Vuelidate from "vuelidate";
 Vue.use(Vuelidate);
 Vue.use(VueSweetalert2);
 Vue.use(VCalendar, { masks: { dayPopover: "" } });
+
+// const base = axios.create({
+//   baseURL: "https://microprobe.hi.is/api/",
+//   headers: { "Content-Type": "application/json", "Cache-Control": "no-cache" }
+// });
+
 const base = axios.create({
-  //baseURL: "http://localhost/api/"
-  baseURL: "https://microprobe.hi.is/api/",
-  headers: { "Content-Type": "application/json", "Cache-Control": "no-cache" }
+  baseURL: "http://localhost/api/"
 });
 Vue.prototype.$http = base;
 
