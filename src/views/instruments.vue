@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-center headerSize text-light display-4 my-5">
+    <h1 class="text-center headerSize text-light display-4 mt-4">
       {{ userData.unit }}
     </h1>
     <div class="container pb-5">
@@ -8,7 +8,7 @@
         <!--                                      THIN SECTIONS                   -->
         <div
           v-if="userData.table == 'thin_sections'"
-          class="linBg border border-light rounded p-3"
+          class="linBg mt-md-4 border border-light rounded p-3"
         >
           <h5>Select:</h5>
 
@@ -110,7 +110,7 @@
 
         <div
           v-if="userData.table !== 'thin_sections'"
-          class="linBg mt-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg"
+          class="linBg mt-md-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg"
         >
           <div class="col-12 text-center">
             <h2 class="text-muted">Select days</h2>

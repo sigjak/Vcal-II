@@ -6,7 +6,7 @@
     <div class="container pb-5">
       <form @submit.prevent="submitting">
         <div
-          class="linBg mt-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg"
+          class="linBg mt-md-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg"
         >
           <div class="col-12 text-center">
             <h2 class="text-muted">Select days</h2>
