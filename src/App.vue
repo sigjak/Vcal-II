@@ -2,7 +2,12 @@
   <div id="app">
     <img src="./images/header_01.png" class="img-fluid" />
     <div class="d-flex justify-content-end">
-      <button class="btn btn-outline-light btn-sm mr-5 btnExit" @click="$redir()">Exit</button>
+      <button
+        class="btn btn-outline-light btn-sm mr-5 btnExit"
+        @click="$redir()"
+      >
+        Exit
+      </button>
     </div>
     <router-view />
   </div>
@@ -30,7 +35,9 @@
     font-size: 2.5rem;
   }
 }
-
+h2 {
+  font-size: calc(26px + (40 - 26) * ((100vw - 300px) / (1600 - 300)));
+}
 .btnExit {
   margin-top: -40px;
   width: 60px !important;
