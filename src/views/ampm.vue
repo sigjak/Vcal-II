@@ -1,14 +1,15 @@
 <template>
   <div>
-    <h1 class="text-center text-light display-4  mt-4">{{ userData.unit }}</h1>
-
+    <h1 class="text-center headerSize text-light display-4 mt-4">
+      {{ userData.unit }}
+    </h1>
     <div class="container pb-5">
       <form @submit.prevent="submitting">
         <div
-          class=" linBg mt-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg "
+          class="linBg mt-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg"
         >
           <div class="col-12 text-center">
-            <h1 class="text-muted">Select days</h1>
+            <h2 class="text-muted">Select days</h2>
           </div>
 
           <div class="col-auto mt-3">
@@ -25,8 +26,8 @@
           </div>
 
           <div class="col-auto">
-            <div class=" card mt-3">
-              <div class="card-header text-center ">Selected days</div>
+            <div class="card mt-3">
+              <div class="card-header text-center">Selected days</div>
               <div class="card-body pt-0 pl-2">
                 <ul v-if="userData.dates.length">
                   <li v-for="(day, index) in userData.dates" :key="index">
@@ -49,7 +50,6 @@
                       />
                       <label class="ml-1">PM</label>
                     </span>
-
                     {{ day.toDateString() }}
                   </li>
                 </ul>

@@ -2,12 +2,7 @@
   <div id="app">
     <img src="./images/header_01.png" class="img-fluid" />
     <div class="d-flex justify-content-end">
-      <button
-        class="btn btn-outline-light btn-sm mr-5 btnExit"
-        @click="$redir()"
-      >
-        Exit
-      </button>
+      <button class="btn btn-outline-light btn-sm mr-5 btnExit" @click="$redir()">Exit</button>
     </div>
     <router-view />
   </div>
@@ -29,6 +24,12 @@
 @import "node_modules/bootstrap/scss/bootstrap-reboot";
 @import "node_modules/bootstrap/scss/input-group";
 @import "node_modules/bootstrap/scss/images";
+
+@media (max-width: 768px) {
+  .headerSize {
+    font-size: 2.5rem;
+  }
+}
 
 .btnExit {
   margin-top: -40px;

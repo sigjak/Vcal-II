@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1 class="text-center text-light display-4  my-5">{{ userData.unit }}</h1>
+    <h1 class="text-center headerSize text-light display-4 my-5">
+      {{ userData.unit }}
+    </h1>
     <div class="container pb-5">
       <form @submit.prevent="submitting">
         <!--                                      THIN SECTIONS                   -->
@@ -11,26 +13,24 @@
           <h5>Select:</h5>
 
           <div class="row">
-            <div class="form-group col-sm-3 ">
+            <div class="form-group col-sm-3">
               <input
                 v-model.number="userData.slide27"
                 type="number"
                 min="0"
-                class=" form-control form-control-sm"
+                class="form-control form-control-sm"
               />
-              <p class=" text-center font-weight-bold">
-                27*46 mm slide
-              </p>
+              <p class="text-center font-weight-bold">27*46 mm slide</p>
             </div>
 
-            <div class="form-group col-sm-3 ">
+            <div class="form-group col-sm-3">
               <input
                 v-model.number="userData.slide27Coated"
                 type="number"
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center font-weight-bold">
+              <p class="text-center font-weight-bold">
                 27*46 mm slide
                 <br />polished/coated
               </p>
@@ -43,9 +43,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center font-weight-bold">
-                1" round slide
-              </p>
+              <p class="text-center font-weight-bold">1" round slide</p>
             </div>
 
             <div class="form-group col-sm-3 text-center">
@@ -55,7 +53,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center font-weight-bold">
+              <p class="text-center font-weight-bold">
                 1" round slide
                 <br />polished/coated
               </p>
@@ -69,7 +67,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center font-weight-bold ">
+              <p class="text-center font-weight-bold">
                 1" round mount
                 <br />polished/coated
               </p>
@@ -83,7 +81,8 @@
                 class="form-control form-control-sm"
               />
               <p class="text-center font-weight-bold">
-                1" round mount <br />7 spl polished/coated
+                1" round mount
+                <br />7 spl polished/coated
               </p>
             </div>
             <div class="form-group col-sm-3 text-center">
@@ -93,9 +92,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class=" text-center font-weight-bold">
-                Carbon coating
-              </p>
+              <p class="text-center font-weight-bold">Carbon coating</p>
             </div>
             <div class="form-group col-sm-3 text-center">
               <input
@@ -104,7 +101,7 @@
                 min="0"
                 class="form-control form-control-sm"
               />
-              <p class="text-center font-weight-bold ">
+              <p class="text-center font-weight-bold">
                 Repolishing and coating
               </p>
             </div>
@@ -113,7 +110,7 @@
 
         <div
           v-if="userData.table !== 'thin_sections'"
-          class=" linBg mt-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg "
+          class="linBg mt-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg"
         >
           <div class="col-12 text-center">
             <h2 class="text-muted">Select days</h2>
@@ -133,8 +130,8 @@
           </div>
 
           <div class="col-auto">
-            <div class=" card mt-3">
-              <div class="card-header text-center ">Selected days</div>
+            <div class="card mt-3">
+              <div class="card-header text-center">Selected days</div>
               <div class="card-body pt-0 pl-2">
                 <ul v-if="userData.dates.length">
                   <li v-for="(day, index) in userData.dates" :key="index">

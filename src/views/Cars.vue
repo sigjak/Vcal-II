@@ -1,20 +1,22 @@
 <template>
   <!-- 1 is confirmed, 0 is pending -->
   <div>
-    <h1 class="text-center text-light display-4  mt-4">{{ userData.unit }}</h1>
+    <h1 class="text-center headerSize text-light display-4 mt-4">
+      {{ userData.unit }}
+    </h1>
 
     <div class="container pb-5">
       <form @submit.prevent="submitting">
         <!--                                      THIN SECTIONS                   -->
 
         <div
-          class=" linBg mt-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg "
+          class="linBg mt-5 form-group row justify-content-center pt-3 pb-5 border rounded-lg"
         >
           <div class="col-12 text-center">
             <h2 class="text-muted">Select days</h2>
           </div>
 
-          <div class=" mt-3">
+          <div class="mt-3">
             <v-date-picker
               mode="range"
               :columns="$screens({ default: 1, lg: 2 })"
@@ -27,9 +29,9 @@
             />
           </div>
 
-          <div class="col-auto ">
-            <div class=" card mt-3">
-              <div class="card-header text-center ">Selected days</div>
+          <div class="col-auto">
+            <div class="card mt-3">
+              <div class="card-header text-center">Selected days</div>
               <div class="card-body text-center pt-0 pl-0">
                 <ul
                   class="py-1"
