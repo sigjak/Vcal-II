@@ -123,27 +123,60 @@ ul {
 .whiteContent {
   color: #fff !important;
 }
+.house10 {
+  background: linear-gradient(to right, crimson 10%, #efefef 0%) !important;
+  border: 1px solid #ccc !important;
+  border-radius: 50% !important;
+}
+.house20 {
+  background: linear-gradient(to right, crimson 20%, #efefef 0%) !important;
+  border: 1px solid #ccc !important;
+  border-radius: 50% !important;
+}
+.house30 {
+  background: linear-gradient(to right, crimson 30%, #efefef 0%) !important;
+  border: 1px solid #ccc !important;
+  border-radius: 50% !important;
+}
+.house40 {
+  background: linear-gradient(to right, crimson 40%, #efefef 0%) !important;
+  border: 1px solid #ccc !important;
+  border-radius: 50% !important;
+}
+.house50 {
+  background: linear-gradient(to right, crimson 50%, #efefef 0%) !important;
+  border: 1px solid #ccc !important;
+  border-radius: 50% !important;
+}
+.house60 {
+  background: linear-gradient(to right, crimson 60%, #efefef 0%) !important;
+  border: 1px solid #ccc !important;
+  border-radius: 50% !important;
+}
+.house70 {
+  background: linear-gradient(to right, crimson 70%, #efefef 0%) !important;
+  border: 1px solid #ccc !important;
+  border-radius: 50% !important;
+}
+.house80 {
+  background: linear-gradient(to right, crimson 80%, #efefef 0%) !important;
+  border: 1px solid #ccc !important;
+  border-radius: 50% !important;
+}
+.house90 {
+  background: linear-gradient(to right, crimson 90%, #efefef 0%) !important;
+  border: 1px solid #ccc !important;
+  border-radius: 50% !important;
+}
 .ambg {
   /* background-color: rgb(121, 151, 248) !important;*/
-  background: linear-gradient(
-    to right,
-    red 0%,
-    red 50%,
-    #efefef 50%,
-    #efefef 100%
-  ) !important;
+  background: linear-gradient(to right, red 50%, #efefef 0%) !important;
   border: 1px solid #ccc !important;
   border-radius: 50% !important;
 }
 .pmbg {
   /* background-color: rgb(121, 151, 248) !important;*/
-  background: linear-gradient(
-    to right,
-    #efefef 0%,
-    #efefef 50%,
-    red 50%,
-    red 100%
-  ) !important;
+  background: linear-gradient(to right, #efefef 50%, red 0%) !important;
   border: 1px solid #ccc !important;
   border-radius: 50% !important;
 }

@@ -71,6 +71,7 @@
         </div>
         <FormFields :userData="userData" :kind="kind" />
       </form>
+      <button @click="test()">HHHHH</button>
     </div>
   </div>
 </template>
@@ -87,6 +88,37 @@ export default {
   props: ["unit", "table"],
   mixins: [mixinMethods, mixinComputed],
   methods: {
+    highClass(available) {
+      let occupied = this.maxOccupancy - available;
+      let ref = (occupied / this.maxOccupancy) * 100;
+      if (ref < 10) {
+        return "house10";
+      }
+      if (ref >= 10 && ref < 20) {
+        return "house20";
+      }
+      if (ref >= 20 && ref < 30) {
+        return "house30";
+      }
+      if (ref >= 30 && ref < 40) {
+        return "house40";
+      }
+      if (ref >= 40 && ref < 50) {
+        return "house50";
+      }
+      if (ref >= 50 && ref < 60) {
+        return "house60";
+      }
+      if (ref >= 60 && ref < 70) {
+        return "house70";
+      }
+      if (ref >= 70 && ref < 80) {
+        return "house80";
+      }
+      if (ref >= 80 && ref < 90) {
+        return "house90";
+      }
+    },
     maxGuard() {
       const inp = document.getElementById("ip");
 
@@ -150,15 +182,21 @@ export default {
       let arr2 = [];
       const arrLength = this.statusDays.length;
       for (let i = 0; i < arrLength; i++) {
+        // let classHigh = "house50";
+        // if (this.statusDays[i] < 5) {
+        //   classHigh = "house10";
+        // }
+
         const temp = {
           highlight: {
-            class: "ambg",
+            class: this.highClass(this.statusDays[i]),
             contentClass: "blackContent"
           },
           popover: {
             label: `Available: ${this.statusDays[i]}`,
             hideIndicator: true
           },
+
           dates: this.availableDays[i]
         };
         arr2.push(temp);
