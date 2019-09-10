@@ -71,7 +71,6 @@
         </div>
         <FormFields :userData="userData" :kind="kind" />
       </form>
-      <button @click="test()">HHHHH</button>
     </div>
   </div>
 </template>
@@ -115,7 +114,7 @@ export default {
       if (ref >= 70 && ref < 80) {
         return "house80";
       }
-      if (ref >= 80 && ref < 90) {
+      if (ref >= 80) {
         return "house90";
       }
     },
@@ -182,11 +181,6 @@ export default {
       let arr2 = [];
       const arrLength = this.statusDays.length;
       for (let i = 0; i < arrLength; i++) {
-        // let classHigh = "house50";
-        // if (this.statusDays[i] < 5) {
-        //   classHigh = "house10";
-        // }
-
         const temp = {
           highlight: {
             class: this.highClass(this.statusDays[i]),
@@ -196,8 +190,8 @@ export default {
             label: `Available: ${this.statusDays[i]}`,
             hideIndicator: true
           },
-
-          dates: this.availableDays[i]
+          dates: this.availableDays[i],
+          order: 200
         };
         arr2.push(temp);
       }
