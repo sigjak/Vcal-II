@@ -35,6 +35,9 @@
     font-size: 2.5rem;
   }
 }
+.focus\:vc-bg-gray-200:focus {
+  background: #edb862 !important;
+}
 h2 {
   font-size: calc(26px + (40 - 26) * ((100vw - 300px) / (1600 - 300)));
 }
