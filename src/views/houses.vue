@@ -87,6 +87,24 @@ export default {
   props: ["unit", "table"],
   mixins: [mixinMethods, mixinComputed],
   methods: {
+    toWord(inp) {
+      let num = [
+        "",
+        "One",
+        "Two",
+        "Three",
+        "Four",
+        "Five",
+        "Six",
+        "Seven",
+        "Eight",
+        "Nine",
+        "Ten",
+        "Eleven"
+      ];
+      const number = parseInt(inp);
+      return num[number] + " available.";
+    },
     highClass(available) {
       let occupied = this.maxOccupancy - available;
       let ref = (occupied / this.maxOccupancy) * 100;
@@ -187,7 +205,7 @@ export default {
             contentClass: "blackContent"
           },
           popover: {
-            label: `Available: ${this.statusDays[i]}`,
+            label: this.toWord(this.statusDays[i]),
             hideIndicator: true
           },
           dates: this.availableDays[i],
