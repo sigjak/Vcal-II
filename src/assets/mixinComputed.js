@@ -45,7 +45,8 @@ export const mixinComputed = {
             label: "Requested",
             hideIndicator: true
           },
-          dates: this.pendingDays
+          dates: this.pendingDays,
+          order: 100
         },
         {
           key: "am",
