@@ -76,7 +76,8 @@ export const mixinComputed = {
           key: "weekend",
           highlight: {
             class: "whiteBackground",
-            contentClass: "greyContent"
+            contentClass:
+              this.kind === "instrument" ? "notAllowed" : "greyContent"
           },
           dates: { weekdays: [1, 7] }
         }

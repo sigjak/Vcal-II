@@ -132,47 +132,47 @@ ul {
   color: #fff !important;
 }
 .house10 {
-  background: linear-gradient(to right, crimson 10%, #efefef 0%) !important;
+  background: linear-gradient(to right, red 10%, #efefef 0%) !important;
   border: 1px solid #ccc !important;
   border-radius: 50% !important;
 }
 .house20 {
-  background: linear-gradient(to right, crimson 20%, #efefef 0%) !important;
+  background: linear-gradient(to right, red 20%, #efefef 0%) !important;
   border: 1px solid #ccc !important;
   border-radius: 50% !important;
 }
 .house30 {
-  background: linear-gradient(to right, crimson 30%, #efefef 0%) !important;
+  background: linear-gradient(to right, red 30%, #efefef 0%) !important;
   border: 1px solid #ccc !important;
   border-radius: 50% !important;
 }
 .house40 {
-  background: linear-gradient(to right, crimson 40%, #efefef 0%) !important;
+  background: linear-gradient(to right, red 40%, #efefef 0%) !important;
   border: 1px solid #ccc !important;
   border-radius: 50% !important;
 }
 .house50 {
-  background: linear-gradient(to right, crimson 50%, #efefef 0%) !important;
+  background: linear-gradient(to right, red 50%, #efefef 0%) !important;
   border: 1px solid #ccc !important;
   border-radius: 50% !important;
 }
 .house60 {
-  background: linear-gradient(to right, crimson 60%, #efefef 0%) !important;
+  background: linear-gradient(to right, red 60%, #efefef 0%) !important;
   border: 1px solid #ccc !important;
   border-radius: 50% !important;
 }
 .house70 {
-  background: linear-gradient(to right, crimson 70%, #efefef 0%) !important;
+  background: linear-gradient(to right, red 70%, #efefef 0%) !important;
   border: 1px solid #ccc !important;
   border-radius: 50% !important;
 }
 .house80 {
-  background: linear-gradient(to right, crimson 80%, #efefef 0%) !important;
+  background: linear-gradient(to right, red 80%, #efefef 0%) !important;
   border: 1px solid #ccc !important;
   border-radius: 50% !important;
 }
 .house90 {
-  background: linear-gradient(to right, crimson 90%, #efefef 0%) !important;
+  background: linear-gradient(to right, red 90%, #efefef 0%) !important;
   border: 1px solid #ccc !important;
   border-radius: 50% !important;
 }
@@ -210,7 +210,7 @@ ul {
   border: 2px solid #ccc !important;
 }
 .blackContent {
-  color: black !important;
+  color: rgb(70, 70, 70) !important;
   //font-style: italic;
 }
 .greyContent {
@@ -219,6 +219,9 @@ ul {
 .redContent {
   color: red !important;
   font-style: italic;
+}
+.notAllowed {
+  cursor: not-allowed !important;
 }
 .vc-day .vc-opacity-0 {
   opacity: 0.2;
