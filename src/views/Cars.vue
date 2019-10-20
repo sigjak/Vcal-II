@@ -74,7 +74,7 @@ export default {
       );
 
       this.userData.status = this.carStatus(this.userData.dates.start);
-      console.log(this.userData);
+
       this.userData.account = `101-${this.userData.account}`;
       this.submit("carPost.php");
     }
