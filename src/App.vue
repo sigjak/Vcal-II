@@ -9,6 +9,7 @@
         Exit
       </button>
     </div>
+
     <router-view />
   </div>
 </template>
@@ -30,17 +31,19 @@
 @import "node_modules/bootstrap/scss/input-group";
 @import "node_modules/bootstrap/scss/images";
 
-// @import "node_modules/sweetalert2/src/scss/animations.scss";
-// @import "node_modules/sweetalert2/src/scss/body.scss";
-// //@import "node_modules/sweetalert2/src/scss/core.scss";
-// @import "node_modules/sweetalert2/src/scss/mixins.scss";
-// @import "node_modules/sweetalert2/src/scss/polyfills.scss";
-// @import "node_modules/sweetalert2/src/scss/theming.scss";
-// @import "node_modules/sweetalert2/src/scss/toasts-animations.scss";
-// @import "node_modules/sweetalert2/src/scss/toasts-body.scss";
-// @import "node_modules/sweetalert2/src/scss/toasts.scss";
-// @import "node_modules/sweetalert2/src/sweetalert2.scss";
-// @import "node_modules/sweetalert2/src/variables.scss";
+@import "node_modules/sweetalert2/src/variables.scss";
+@import "node_modules/sweetalert2/src/scss/animations.scss";
+@import "node_modules/sweetalert2/src/scss/body.scss";
+@import "node_modules/sweetalert2/src/scss/mixins.scss";
+@import "node_modules/sweetalert2/src/scss/core.scss";
+
+//@import "node_modules/sweetalert2/src/scss/polyfills.scss";
+//@import "node_modules/sweetalert2/src/scss/theming.scss";
+//@import "node_modules/sweetalert2/src/scss/toasts-animations.scss";
+//@import "node_modules/sweetalert2/src/scss/toasts-body.scss";
+//@import "node_modules/sweetalert2/src/scss/toasts.scss";
+
+//@import "node_modules/sweetalert2/src/sweetalert2.scss";
 
 @media (max-width: 768px) {
   .headerSize {

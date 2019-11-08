@@ -6,7 +6,7 @@ import VCalendar from "v-calendar";
 import axios from "axios";
 import VueSweetalert2 from "vue-sweetalert2";
 import Vuelidate from "vuelidate";
-//import "sweetalert2/dist/sweetalert2.css";
+//import "sweetalert2/dist/sweetalert2.min.css";
 Vue.use(Vuelidate);
 Vue.use(VueSweetalert2);
 Vue.use(VCalendar, { masks: { dayPopover: "" } });
