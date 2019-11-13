@@ -58,10 +58,15 @@ export const mixinMethods = {
     daysBetween(start, end) {
       let tsArray = [];
       tsArray.push(start);
-      do {
-        start = start + 86400000;
-        tsArray.push(start);
-      } while (start < end);
+
+      // check here if only one day
+      if (start !== end) {
+        do {
+          start = start + 86400000;
+          tsArray.push(start);
+        } while (start < end);
+      }
+
       tsArray.forEach((element, index) => (tsArray[index] = element / 1000));
       return tsArray;
       // tsArray timestamp for PHP
