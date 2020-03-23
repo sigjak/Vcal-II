@@ -206,11 +206,13 @@ ul {
   border: 1px red solid !important;
   border-radius: 50% !important;
   opacity: 0.9;
+  z-index: 102;
 }
 .redCircle {
   background-color: rgb(255, 255, 255) !important;
   border: 2px solid red !important;
   border-radius: 50% !important;
+  z-index: 101;
 }
 .blackCircle {
   background-color: rgba(204, 204, 204, 0.356) !important;
