@@ -71,16 +71,15 @@ export const mixinComputed = {
             hideIndicator: true
           },
           dates: this.pmReservedDays
-        },
-        {
-          key: "weekend",
-          highlight: {
-            class: "whiteBackground",
-            contentClass:
-              this.kind === "instrument" ? "notAllowed" : "greyContent"
-          },
-          dates: { weekdays: [1, 7] }
         }
+        // {
+        //   key: "weekend",
+        //   highlight: {
+        //     class: "whiteBackground",
+        //     contentClass: this.kind === "instrument" ? "notAllowed" : ""
+        //   },
+        //   dates: { weekdays: [1, 7] }
+        // }
       ];
       return attrs;
     }

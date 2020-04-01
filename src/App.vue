@@ -209,10 +209,8 @@ ul {
   z-index: 102;
 }
 .redCircle {
-  background-color: rgb(255, 255, 255) !important;
+  background-color: #ffff !important;
   border: 2px solid red !important;
-  border-radius: 50% !important;
-  z-index: 101;
 }
 .blackCircle {
   background-color: rgba(204, 204, 204, 0.356) !important;
@@ -227,12 +225,17 @@ ul {
 }
 .redContent {
   color: red !important;
-  font-style: italic;
+  font-style: italic !important;
+  z-index: 102;
 }
 .notAllowed {
   cursor: not-allowed !important;
 }
 .vc-day .vc-opacity-0 {
   opacity: 0.2;
+}
+
+.vc-text-gray-400 {
+  cursor: not-allowed !important;
 }
 </style>

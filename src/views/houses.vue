@@ -164,22 +164,15 @@ export default {
 
     submitting() {
       // selectedDays contain PHP timestamp
-
       this.userData.account = `101-${this.userData.account}`;
-      // console.log(this.userData.dates.end);
-      // let dt = this.userData.dates.end;
-      // dt.setDate(dt.getDate() - 1);
-      // console.log(dt);
-      // this.userData.dates.end = dt;
       this.submit("housePost.php");
-      //console.log(this.userData.dates);
     },
     howToBook() {
       this.$swal({
-        title: "Selecting",
-        icon: "info",
-        timer: 5000,
-        text: "Drag cursor from arrival day to departure."
+        title: "Selecting:",
+        timer: 10000,
+        text:
+          "Click on arrival day and release; then move cursor to departure day and click."
       });
     }
   },
