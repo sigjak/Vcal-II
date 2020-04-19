@@ -11,14 +11,18 @@ Vue.use(Vuelidate);
 Vue.use(VueSweetalert2);
 Vue.use(VCalendar, { masks: { dayPopover: "" } });
 
-// const base = axios.create({
-//   baseURL: "https://microprobe.hi.is/api/",
-//   headers: { "Content-Type": "application/json", "Cache-Control": "no-cache" }
-// });
+let base = "";
+if (process.env.NODE_ENV == "development") {
+  base = axios.create({
+    baseURL: "http://localhost/api/"
+  });
+} else {
+  base = axios.create({
+    baseURL: "https://microprobe.hi.is/api/",
+    headers: { "Content-Type": "application/json", "Cache-Control": "no-cache" }
+  });
+}
 
-const base = axios.create({
-  baseURL: "http://localhost/api/"
-});
 Vue.prototype.$http = base;
 
 Vue.config.productionTip = false;
