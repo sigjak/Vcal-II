@@ -30,7 +30,7 @@
           <div class="col-auto">
             <div class="card mt-3">
               <div class="card-header text-center">Selected days</div>
-              <div class="card-body pt-0 pl-2">
+              <div class="card-body pt-0 pl-2" v-if="userData.dates !== null">
                 <ul
                   class="py-1"
                   v-if="typeof userData.dates.start !== 'undefined'"
