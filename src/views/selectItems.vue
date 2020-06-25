@@ -251,12 +251,13 @@
               <router-link
                 class="btn btn-primary"
                 :to="{
-                  name: 'houses',
-                  params: { unit: 'Dyngja', table: 'dyngja' }
+                  name: 'cars',
+                  params: { unit: 'Grey Hilux', table: 'grey_hilux' }
                 }"
-                >Dyngja</router-link
+                >Grey Hilux</router-link
               >
             </div>
+
             <div>
               <router-link
                 class="btn btn-primary"
@@ -280,7 +281,14 @@
               >
             </div>
             <div>
-              <button class="btn btn-primary">Storage</button>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'houses',
+                  params: { unit: 'Dyngja', table: 'dyngja' }
+                }"
+                >Dyngja</router-link
+              >
             </div>
           </div>
         </div>
