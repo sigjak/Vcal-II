@@ -40,9 +40,13 @@
                   class="py-1"
                   v-if="typeof userData.dates.start !== 'undefined'"
                 >
-                  <li>From: {{ userData.dates.start.toDateString() }}</li>
                   <li>
-                    To: &nbsp;&nbsp;&nbsp;&nbsp;
+                    From:
+
+                    {{ userData.dates.start.toDateString() }}
+                  </li>
+                  <li>
+                    <span style="padding-right:18px"> To:</span>
                     {{ userData.dates.end.toDateString() }}
                   </li>
                 </ul>

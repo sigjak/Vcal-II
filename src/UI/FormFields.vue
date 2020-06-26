@@ -117,9 +117,6 @@ export default {
 
   validations: {
     userData: {
-      dates: {
-        required
-      },
       status: {
         required,
         minLength: minLength(1)

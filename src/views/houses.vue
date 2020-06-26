@@ -37,7 +37,7 @@
                 >
                   <li>From: {{ userData.dates.start.toDateString() }}</li>
                   <li>
-                    To: &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="padding-right:18px;">To:</span>
                     {{ userData.dates.end.toDateString() }}
                   </li>
                 </ul>
@@ -245,6 +245,7 @@ export default {
         this.compareDays = resp.data[0].map(element => {
           return element / 1000;
         });
+        //console.log(this.compareDays);
         this.statusDays = resp.data[1];
         this.assign(resp.data[2], this.reservedDays);
         this.maxOccupancy = resp.data[3];
