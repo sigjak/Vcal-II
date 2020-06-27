@@ -30,21 +30,23 @@
           <div class="col-auto">
             <div class="card mt-3">
               <div class="card-header text-center">Selected days</div>
-              <div class="card-body pt-0 pl-2" v-if="userData.dates !== null">
-                <ul
-                  class="py-1"
-                  v-if="typeof userData.dates.start !== 'undefined'"
-                >
-                  <li>From: {{ userData.dates.start.toDateString() }}</li>
-                  <li>
-                    <span style="padding-right:18px;">To:</span>
-                    {{ userData.dates.end.toDateString() }}
-                  </li>
-                </ul>
-                <div
-                  class="input-group mt-2 mx-auto"
-                  v-show="typeof userData.dates.start !== 'undefined'"
-                >
+              <div class="card-body pt-0 pl-2">
+                <div v-if="userData.dates != null">
+                  <ul
+                    class="py-1"
+                    v-if="typeof userData.dates.start !== 'undefined'"
+                  >
+                    <li>From: {{ userData.dates.start.toDateString() }}</li>
+                    <li>
+                      <span style="padding-right:18px;">To:</span>
+                      {{ userData.dates.end.toDateString() }}
+                    </li>
+                  </ul>
+                </div>
+                <div v-else class="text-center mt-4 pb-2">
+                  Nothing selected!
+                </div>
+                <div class="input-group mt-3 mx-auto">
                   <div class="input-group-prepend">
                     <span class="input-group-text bb">How many?</span>
                   </div>
@@ -57,6 +59,7 @@
                     id="ip"
                     min="1"
                     max
+                    v-on:click.once="setMax"
                     v-on:keyup="maxGuard"
                   />
                   <span
@@ -86,6 +89,33 @@ export default {
   },
   props: ["unit", "table"],
   mixins: [mixinMethods, mixinComputed],
+
+  data() {
+    return {
+      firstRun: true,
+      kind: "house",
+      attrsHouse: [],
+      compareDays: [],
+      reservedDays: [],
+      availableDays: [],
+      statusDays: [],
+      maxOccupancy: "",
+      userData: {
+        status: [],
+        unit: "",
+        table: "",
+        dates: {},
+        fullname: "",
+        email: "",
+        repeatEmail: "",
+        account: "",
+        supervisor: "",
+        comments: "",
+        selectedDays: []
+      }
+    };
+  },
+
   methods: {
     toWord(inp) {
       let num = [
@@ -142,7 +172,13 @@ export default {
       if (this.userData.status > inp.max) this.userData.status = "";
     },
     setMax() {
+      if (this.firstRun) {
+        this.firstRun = false;
+        return;
+      }
+
       const inp = document.getElementById("ip");
+
       this.userData.status = "";
       this.userData.selectedDays = this.daysBetween(
         this.userData.dates.start.getTime(),
@@ -166,6 +202,7 @@ export default {
       // selectedDays contain PHP timestamp
       this.userData.account = `101-${this.userData.account}`;
       this.submit("housePost.php");
+      // console.log(this.userData);
     },
     howToBook() {
       this.$swal({
@@ -175,31 +212,6 @@ export default {
           "Click on arrival day and release; then move cursor to departure day and click."
       });
     }
-  },
-
-  data() {
-    return {
-      kind: "house",
-      attrsHouse: [],
-      compareDays: [],
-      reservedDays: [],
-      availableDays: [],
-      statusDays: [],
-      maxOccupancy: "",
-      userData: {
-        status: [],
-        unit: "",
-        table: "",
-        dates: [],
-        fullname: "",
-        email: "",
-        repeatEmail: "",
-        account: "",
-        supervisor: "",
-        comments: "",
-        selectedDays: []
-      }
-    };
   },
   computed: {
     moreAttr() {
@@ -224,6 +236,7 @@ export default {
       return arr2;
     }
   },
+
   mounted() {
     this.howToBook();
   },
