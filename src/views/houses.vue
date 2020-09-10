@@ -209,7 +209,7 @@ export default {
         title: "Selecting:",
         timer: 10000,
         text:
-          "Click on arrival day and release; then move cursor to departure day and click."
+          "Click on first day and release; then move cursor to last day and click."
       });
     }
   },
