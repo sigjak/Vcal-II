@@ -73,15 +73,15 @@ export const mixinMethods = {
     },
     carStatus(day) {
       let dayOne = day.getTime();
-      let status = 1;
+      let status = 0;
 
       const yr = +new Date().getFullYear();
       const firstDaySummer = new Date(yr, 4, 1).getTime();
       const lastDaySummer = new Date(yr, 9, 1).getTime();
 
-      if (firstDaySummer < dayOne && dayOne < lastDaySummer) {
-        status = 0;
-      }
+      // if (firstDaySummer < dayOne && dayOne < lastDaySummer) {
+      //   status = 0;
+      // }
 
       return status;
     },
