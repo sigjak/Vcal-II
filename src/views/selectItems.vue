@@ -298,6 +298,28 @@
               <router-link
                 class="btn btn-primary"
                 :to="{
+                  name: 'cars',
+                  params: { unit: 'LandRover 35', table: 'landrover_35' }
+                }"
+                >LandRover 35</router-link
+              >
+            </div>
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
+                  name: 'cars',
+                  params: { unit: 'LandRover 38', table: 'landrover_38' }
+                }"
+                >LandRover 38</router-link
+              >
+            </div>
+          </div>
+          <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
+            <div>
+              <router-link
+                class="btn btn-primary"
+                :to="{
                   name: 'instruments',
                   params: { unit: 'ICP-OES-II', table: 'icpoes2' }
                 }"
