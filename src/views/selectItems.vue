@@ -299,9 +299,9 @@
                 class="btn btn-primary"
                 :to="{
                   name: 'cars',
-                  params: { unit: 'LandRover 35', table: 'landrover_35' }
+                  params: { unit: 'LandRover 37', table: 'landrover_35' }
                 }"
-                >LandRover 35</router-link
+                >LandRover 37</router-link
               >
             </div>
             <div>
