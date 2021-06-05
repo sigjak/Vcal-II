@@ -2,7 +2,7 @@ import Holidays from "./dates";
 export const mixinComputed = {
   computed: {
     attrs() {
-      const attrs = [
+      const attrs1 = [
         {
           bar: true,
           dates: new Date(),
@@ -22,19 +22,40 @@ export const mixinComputed = {
           },
           dates: Holidays[1]
         },
-        {
-          key: "allday",
-          highlight: {
-            class: "redBackground",
-            contentClass: "whiteContent"
-          },
-          popover: {
-            label: "Booked",
-            hideIndicator: true
-          },
-          dates: this.reservedDays,
-          order: 100
-        },
+        // {
+        //   key: "allday",
+        //   highlight: {
+        //     class: "redBackground",
+        //     contentClass: "whiteContent"
+        //   },
+        //   popover: {
+        //     label: "Booked",
+
+        //     hideIndicator: true
+        //   },
+        //   customData: {
+        //     key: "some"
+        //   },
+        //   dates: this.reservedDays[1],
+        //   order: 100
+        // },
+        // {
+        //   key: "allday",
+        //   highlight: {
+        //     class: "redBackground",
+        //     contentClass: "whiteContent"
+        //   },
+        //   popover: {
+        //     label: "Booked2",
+
+        //     hideIndicator: true
+        //   },
+        //   customData: {
+        //     key: "some"
+        //   },
+        //   dates: this.reservedDays[2],
+        //   order: 100
+        // },
         {
           key: "pending",
           highlight: {
@@ -81,6 +102,31 @@ export const mixinComputed = {
         //   dates: { weekdays: [1, 7] }
         // }
       ];
+
+      // second array with names of those that booked
+
+      for (var i = 0; i < this.reservedDays.length; i++) {
+        const temp = {
+          key: "allday",
+          highlight: {
+            class: "redBackground",
+            contentClass: "whiteContent"
+          },
+          popover: {
+            label: this.resNames[i] + " booked",
+
+            hideIndicator: true
+          },
+          customData: {
+            key: "some"
+          },
+          dates: this.reservedDays[i],
+          order: 100
+        };
+        this.attrs2.push(temp);
+      }
+
+      const attrs = [...attrs1, ...this.attrs2];
       return attrs;
     }
   }

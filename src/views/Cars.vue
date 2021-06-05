@@ -84,14 +84,18 @@ export default {
 
       this.userData.account = `101-${this.userData.account}`;
       this.submit("carPost.php");
+    },
+    bookTest() {
+      return "booked + name";
     }
   },
   data() {
     return {
+      resNames: [],
+      attrs2: [],
       kind: "cars",
       reservedDays: [],
       pendingDays: [],
-
       userData: {
         status: "0",
         unit: "",
@@ -120,13 +124,17 @@ export default {
       localStorage.setItem("unit", this.unit);
       localStorage.setItem("table", this.table);
     }
+
     this.$http.get(`getDate.php?name=${this.userData.table}`).then(resp => {
       if (resp.data !== "ConnectionError") {
         this.assign(resp.data[0], this.pendingDays);
         this.assign(resp.data[1], this.reservedDays);
+        this.resNames = resp.data[2]; // add
       } else {
         this.showConnError();
       }
+      console.log(this.resNames);
+      console.log(this.reservedDays);
     });
   }
 };
