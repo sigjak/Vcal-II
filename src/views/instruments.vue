@@ -151,7 +151,7 @@
 
 <script>
 import { mixinMethods } from "../assets/mixinMethods";
-import { mixinComputed } from "../assets/mixinComputed";
+import { mixinComputedNew } from "../assets/mixinComputedNew";
 import Holidays from "../assets/dates";
 import FormFields from "../UI/FormFields";
 export default {
@@ -159,7 +159,7 @@ export default {
   components: {
     FormFields
   },
-  mixins: [mixinMethods, mixinComputed],
+  mixins: [mixinMethods, mixinComputedNew],
   methods: {
     submitting() {
       this.userData.dates.forEach(element => {
@@ -172,6 +172,8 @@ export default {
   data() {
     return {
       kind: "instrument",
+      resNames: [],
+      //attrs2: [],
       disabledDates: [{ weekdays: [1, 7] }],
       userData: {
         status: [0],
@@ -211,10 +213,13 @@ export default {
     this.$http.get(`getDate.php?name=${this.userData.table}`).then(resp => {
       if (resp.data !== "ConnectionError") {
         this.assign(resp.data[1], this.reservedDays);
+        this.resNames = resp.data[2];
         this.disabledDates = this.disabledDates.concat(
           this.reservedDays,
           Holidays[1]
         );
+        // console.log(this.resNames);
+        // console.log(this.reservedDays);
         if (this.userData.table === "thin_sections") {
           this.userData.dates.push(new Date());
           this.kind = "thin_sections";

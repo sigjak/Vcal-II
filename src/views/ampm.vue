@@ -96,6 +96,8 @@ export default {
   data() {
     return {
       kind: "instrument",
+      resNames: [],
+      attrs2: [],
       disabledDates: [{ weekdays: [1, 7] }],
       amShow: [],
       pmShow: [],

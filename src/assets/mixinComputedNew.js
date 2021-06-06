@@ -1,8 +1,8 @@
 import Holidays from "./dates";
-export const mixinComputed = {
+export const mixinComputedNew = {
   computed: {
     attrs() {
-      const attrs = [
+      const attrs1 = [
         {
           bar: true,
           dates: new Date(),
@@ -21,23 +21,6 @@ export const mixinComputed = {
             hideIndicator: true
           },
           dates: Holidays[1]
-        },
-        {
-          key: "allday",
-          highlight: {
-            class: "redBackground",
-            contentClass: "whiteContent"
-          },
-          popover: {
-            label: "Booked",
-
-            hideIndicator: true
-          },
-          customData: {
-            key: "some"
-          },
-          dates: this.reservedDays[1],
-          order: 100
         },
         {
           key: "pending",
@@ -87,29 +70,29 @@ export const mixinComputed = {
       ];
 
       // second array with names of those that booked
+      let attrs2 = [];
+      for (var i = 0; i < this.reservedDays.length; i++) {
+        const temp = {
+          key: "allday",
+          highlight: {
+            class: "redBackground",
+            contentClass: "whiteContent"
+          },
+          popover: {
+            label: this.resNames[i] + " booked",
 
-      // for (var i = 0; i < this.reservedDays.length; i++) {
-      //   const temp = {
-      //     key: "allday",
-      //     highlight: {
-      //       class: "redBackground",
-      //       contentClass: "whiteContent"
-      //     },
-      //     popover: {
-      //       label: this.resNames[i] + " booked",
+            hideIndicator: true
+          },
+          customData: {
+            key: "some"
+          },
+          dates: this.reservedDays[i],
+          order: 100
+        };
+        attrs2.push(temp);
+      }
 
-      //       hideIndicator: true
-      //     },
-      //     customData: {
-      //       key: "some"
-      //     },
-      //     dates: this.reservedDays[i],
-      //     order: 100
-      //   };
-      //   this.attrs2.push(temp);
-      // }
-
-      // const attrs = [...attrs1, ...this.attrs2];
+      const attrs = [...attrs1, ...attrs2];
       return attrs;
     }
   }

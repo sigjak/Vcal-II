@@ -63,7 +63,7 @@
 
 <script>
 import { mixinMethods } from "../assets/mixinMethods";
-import { mixinComputed } from "../assets/mixinComputed";
+import { mixinComputedNew } from "../assets/mixinComputedNew";
 //import Holidays from "../assets/dates";
 import FormFields from "../UI/FormFields";
 export default {
@@ -71,7 +71,7 @@ export default {
     FormFields
   },
   props: ["unit", "table"],
-  mixins: [mixinMethods, mixinComputed],
+  mixins: [mixinMethods, mixinComputedNew],
   methods: {
     submitting() {
       // selectedDays contains PHP timestamp
@@ -92,7 +92,6 @@ export default {
   data() {
     return {
       resNames: [],
-      attrs2: [],
       kind: "cars",
       reservedDays: [],
       pendingDays: [],
@@ -133,8 +132,6 @@ export default {
       } else {
         this.showConnError();
       }
-      console.log(this.resNames);
-      console.log(this.reservedDays);
     });
   }
 };
