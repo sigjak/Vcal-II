@@ -36,7 +36,7 @@ export const mixinComputed = {
           customData: {
             key: "some"
           },
-          dates: this.reservedDays[1],
+          dates: this.reservedDays,
           order: 100
         },
         {

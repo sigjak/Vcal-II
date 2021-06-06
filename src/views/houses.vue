@@ -95,6 +95,7 @@ export default {
       firstRun: true,
       kind: "house",
       attrsHouse: [],
+      partialNames: [],
       compareDays: [],
       reservedDays: [],
       availableDays: [],
@@ -215,7 +216,7 @@ export default {
   },
   computed: {
     moreAttr() {
-      let arr2 = [];
+      let arrMore = [];
       const arrLength = this.statusDays.length;
       for (let i = 0; i < arrLength; i++) {
         const temp = {
@@ -224,16 +225,20 @@ export default {
             contentClass: "blackContent"
           },
           popover: {
-            label: this.toWord(this.statusDays[i]),
+            label:
+              this.partialNames[i] +
+              " booked. " +
+              " -- -- " +
+              this.toWord(this.statusDays[i]),
             hideIndicator: true
           },
           dates: this.availableDays[i],
           order: 200
         };
-        arr2.push(temp);
+        arrMore.push(temp);
       }
 
-      return arr2;
+      return arrMore;
     }
   },
 
@@ -255,12 +260,19 @@ export default {
     this.$http.get(`getHouse.php?name=${this.userData.table}`).then(resp => {
       if (resp.data !== "ConnectionError") {
         this.assign(resp.data[0], this.availableDays);
+
         this.compareDays = resp.data[0].map(element => {
           return element / 1000;
         });
-        //console.log(this.compareDays);
+        console.log(resp.data[0]);
+        console.log(resp.data[5]);
+        //console.log(resp.data[1]);
+        // console.log(resp.data[2]);
+        //console.log(resp.data[3]);
+        this.partialNames = resp.data[5];
         this.statusDays = resp.data[1];
         this.assign(resp.data[2], this.reservedDays);
+        // console.log(this.reservedDays);
         this.maxOccupancy = resp.data[3];
         this.attrsHouse = this.attrs.concat(this.moreAttr);
       } else {
