@@ -265,15 +265,13 @@ export default {
         this.compareDays = resp.data[0].map(element => {
           return element / 1000;
         });
-        // console.log(resp.data[0]);
-        //console.log(resp.data[1]);
-        //console.log(resp.data[2]);
-        //console.log(resp.data[3]);
-        //console.log(resp.data[4]);
+
         this.statusDays = resp.data[1];
         this.assign(resp.data[2], this.reservedDays);
         this.maxOccupancy = resp.data[3];
-        this.attrsHouse = this.attrs.concat(this.moreAttr);
+        this.statusDays !== null
+          ? (this.attrsHouse = this.attrs.concat(this.moreAttr))
+          : (this.attrsHouse = this.attrs);
       } else {
         this.showConnError();
       }
