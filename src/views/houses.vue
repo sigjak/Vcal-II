@@ -81,14 +81,14 @@
 <script>
 // import Holidays from "../assets/dates";
 import { mixinMethods } from "../assets/mixinMethods";
-import { mixinComputed } from "../assets/mixinComputed";
+import { mixinComputedNew } from "../assets/mixinComputedNew";
 import FormFields from "../UI/FormFields";
 export default {
   components: {
     FormFields
   },
   props: ["unit", "table"],
-  mixins: [mixinMethods, mixinComputed],
+  mixins: [mixinMethods, mixinComputedNew],
 
   data() {
     return {
@@ -97,7 +97,9 @@ export default {
       attrsHouse: [],
       compareDays: [],
       reservedDays: [],
+      resNames: [],
       availableDays: [],
+      partialNames: [],
       statusDays: [],
       maxOccupancy: "",
       userData: {
@@ -215,7 +217,7 @@ export default {
   },
   computed: {
     moreAttr() {
-      let arr2 = [];
+      let arrMore = [];
       const arrLength = this.statusDays.length;
       for (let i = 0; i < arrLength; i++) {
         const temp = {
@@ -224,16 +226,19 @@ export default {
             contentClass: "blackContent"
           },
           popover: {
-            label: this.toWord(this.statusDays[i]),
+            label:
+              this.partialNames[i] +
+              " booked. -- " +
+              this.toWord(this.statusDays[i]),
             hideIndicator: true
           },
           dates: this.availableDays[i],
           order: 200
         };
-        arr2.push(temp);
+        arrMore.push(temp);
       }
 
-      return arr2;
+      return arrMore;
     }
   },
 
@@ -255,10 +260,16 @@ export default {
     this.$http.get(`getHouse.php?name=${this.userData.table}`).then(resp => {
       if (resp.data !== "ConnectionError") {
         this.assign(resp.data[0], this.availableDays);
+        this.partialNames = resp.data[4];
+        this.resNames = resp.data[5];
         this.compareDays = resp.data[0].map(element => {
           return element / 1000;
         });
-        //console.log(this.compareDays);
+        // console.log(resp.data[0]);
+        //console.log(resp.data[1]);
+        //console.log(resp.data[2]);
+        //console.log(resp.data[3]);
+        //console.log(resp.data[4]);
         this.statusDays = resp.data[1];
         this.assign(resp.data[2], this.reservedDays);
         this.maxOccupancy = resp.data[3];
