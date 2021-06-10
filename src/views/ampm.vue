@@ -20,7 +20,7 @@
               :step="1"
               v-model="userData.dates"
               :disabled-dates="disabledDates"
-              :attributes="attrs"
+              :attributes="ampmAttrs"
               is-inline
             />
           </div>
@@ -65,7 +65,7 @@
 
 <script>
 import { mixinMethods } from "../assets/mixinMethods";
-import { mixinComputed } from "../assets/mixinComputed";
+import { mixinComputedNew } from "../assets/mixinComputedNew";
 import Holidays from "../assets/dates";
 import FormFields from "../UI/FormFields";
 export default {
@@ -73,7 +73,8 @@ export default {
     FormFields
   },
   props: ["unit", "table"],
-  mixins: [mixinMethods, mixinComputed],
+  mixins: [mixinMethods, mixinComputedNew],
+
   methods: {
     submitting() {
       let stat = this.status(this.userData);
@@ -93,11 +94,55 @@ export default {
       }
     }
   },
+  computed: {
+    amAttrs() {
+      let amAttrs = [];
+      const amLength = this.amReservedDays.length;
+      for (let i = 0; i < amLength; i++) {
+        const temp = {
+          key: "am",
+          highlight: {
+            class: "ambg",
+            contentClass: "blackContent"
+          },
+          popover: {
+            label: this.amNames[i] + " booked. -- PM available",
+            hideIndicator: true
+          },
+          dates: this.amReservedDays[i]
+        };
+        amAttrs.push(temp);
+      }
+      return amAttrs;
+    },
+    pmAttrs() {
+      let pmAttrs = [];
+      const pmLength = this.pmReservedDays.length;
+      for (let i = 0; i < pmLength; i++) {
+        const temp = {
+          key: "pm",
+          highlight: {
+            class: "pmbg",
+            contentClass: "blackContent"
+          },
+          popover: {
+            label: this.pmNames[i] + " booked. -- AM available",
+            hideIndicator: true
+          },
+          dates: this.pmReservedDays[i]
+        };
+        pmAttrs.push(temp);
+      }
+      return pmAttrs;
+    }
+  },
+
   data() {
     return {
       kind: "instrument",
       resNames: [],
-      attrs2: [],
+      ampmAttrs: [],
+      //attrs2: [],
       disabledDates: [{ weekdays: [1, 7] }],
       amShow: [],
       pmShow: [],
@@ -119,6 +164,8 @@ export default {
         selectedDays: []
       },
       amReservedDays: [],
+      amNames: [],
+      pmNames: [],
       pmReservedDays: [],
       reservedDays: []
     };
@@ -143,9 +190,13 @@ export default {
         this.amArray = resp.data[0];
         this.pmArray = resp.data[2];
         this.assign(resp.data[0], this.amReservedDays);
-        this.assign(resp.data[1], this.reservedDays);
-        this.assign(resp.data[2], this.pmReservedDays);
+        this.amNames = resp.data[1];
+        this.resNames = resp.data[3];
+        this.pmNames = resp.data[5];
+        this.assign(resp.data[2], this.reservedDays);
+        this.assign(resp.data[4], this.pmReservedDays);
 
+        this.ampmAttrs = this.attrs.concat(this.amAttrs, this.pmAttrs);
         this.disabledDates = this.disabledDates.concat(
           this.reservedDays,
           Holidays[1]

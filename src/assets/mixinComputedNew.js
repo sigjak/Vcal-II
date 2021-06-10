@@ -34,31 +34,31 @@ export const mixinComputedNew = {
           },
           dates: this.pendingDays,
           order: 100
-        },
-        {
-          key: "am",
-          highlight: {
-            class: "ambg",
-            contentClass: "blackContent"
-          },
-          popover: {
-            label: "PM available",
-            hideIndicator: true
-          },
-          dates: this.amReservedDays
-        },
-        {
-          key: "pm",
-          highlight: {
-            class: "pmbg",
-            contentClass: "blackContent"
-          },
-          popover: {
-            label: "AM available",
-            hideIndicator: true
-          },
-          dates: this.pmReservedDays
         }
+        // {
+        //   key: "am",
+        //   highlight: {
+        //     class: "ambg",
+        //     contentClass: "blackContent"
+        //   },
+        //   popover: {
+        //     label: "PM available",
+        //     hideIndicator: true
+        //   },
+        //   dates: this.amReservedDays
+        // },
+        // {
+        //   key: "pm",
+        //   highlight: {
+        //     class: "pmbg",
+        //     contentClass: "blackContent"
+        //   },
+        //   popover: {
+        //     label: "AM available",
+        //     hideIndicator: true
+        //   },
+        //   dates: this.pmReservedDays
+        // }
         // {
         //   key: "weekend",
         //   highlight: {
@@ -79,7 +79,7 @@ export const mixinComputedNew = {
             contentClass: "whiteContent"
           },
           popover: {
-            label: this.resNames[i] + " booked",
+            label: this.resNames[i] + " booked.",
 
             hideIndicator: true
           },
