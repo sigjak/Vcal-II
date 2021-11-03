@@ -293,8 +293,8 @@
           </div>
         </div>
         <div class="row justify-content-center">
-          <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
-            <div>
+          <!--<div class="col-md-4 d-flex justify-content-around mt-2 p-0">
+           <div>
               <router-link
                 class="btn btn-primary"
                 :to="{
@@ -313,8 +313,8 @@
                 }"
                 >LandRover 38</router-link
               >
-            </div>
-          </div>
+            </div> 
+          </div>-->
           <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
