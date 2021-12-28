@@ -294,7 +294,7 @@
         </div>
         <div class="row justify-content-center">
           <!-- added Landrover 37 by changing col-md-2 to col-md-3 -->
-          <div class="col-md-2 d-flex justify-content-around mt-2 p-0">
+          <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
                 class="btn btn-primary"
@@ -306,7 +306,7 @@
               >
               <!-- Landrover 37 table heitir Landrover_35 -->
             </div>
-            <!-- <div>
+            <div>
               <router-link
                 class="btn btn-primary"
                 :to="{
@@ -315,7 +315,7 @@
                 }"
                 >LandRover 38</router-link
               >
-            </div> -->
+            </div>
           </div>
           <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
             <div>
