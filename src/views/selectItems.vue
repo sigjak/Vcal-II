@@ -240,9 +240,9 @@
                 class="btn btn-primary"
                 :to="{
                   name: 'cars',
-                  params: { unit: 'Blue Hilux', table: 'blue_hilux' }
+                  params: { unit: 'White Ford', table: 'blue_hilux' }
                 }"
-                >Blue Hilux</router-link
+                >White Ford</router-link
               >
             </div>
           </div>
@@ -294,8 +294,8 @@
         </div>
         <div class="row justify-content-center">
           <!-- added Landrover 37 by changing col-md-2 to col-md-3 -->
-          <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
-            <div>
+          <!--  <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
+          <div>
               <router-link
                 class="btn btn-primary"
                 :to="{
@@ -304,9 +304,9 @@
                 }"
                 >LandRover 37</router-link
               >
-              <!-- Landrover 37 table heitir Landrover_35 -->
-            </div>
-            <div>
+           
+            </div> -->
+          <!-- <div>
               <router-link
                 class="btn btn-primary"
                 :to="{
@@ -315,8 +315,8 @@
                 }"
                 >LandRover 38</router-link
               >
-            </div>
-          </div>
+            </div> 
+          </div>-->
           <div class="col-md-4 d-flex justify-content-around mt-2 p-0">
             <div>
               <router-link
